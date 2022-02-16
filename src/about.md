@@ -171,23 +171,14 @@ Rust book][error-docs] and [this blog post][error-blog].
 
 ## A note about crate representation
 
-This cookbook is intended eventually to provide expansive coverage of
-the Rust crate ecosystem, but today is limited in scope while we get
-it bootstrapped and work on the presentation. Hopefully, starting
-from a small scope and slowly expanding will help the cookbook become
-a high-quality resource sooner, and allow it to maintain consistent
-quality levels as it grows.
+We are open to including any library crate that is at least moderately
+popular. For example, any library crate mentioned on
+[Awesome Rust][awesome-rust-libs] shall be considered.
 
-At present the cookbook is focused on the standard library, and on
-"core", or "foundational", crates—those crates that make up the most
-common programming tasks, and that the rest of the ecosystem builds
-off of.
+Criteria for *not* including a library include:
 
-The cookbook is closely tied to the [Rust Libz Blitz], a project to
-identify, and improve the quality of such crates, and so it largely
-defers crate selection to that project. Any crates that have already
-been evaluated as part of that process are in scope for the cookbook,
-as are crates that are pending evaluation.
+* Still in rapid development, minimal / no use in production code.
+* Very large code size for a minimally useful example.
 
 {{#include links.md}}
 
@@ -195,8 +186,8 @@ as are crates that are pending evaluation.
 [error-docs]: https://doc.rust-lang.org/book/error-handling.html
 [error-blog]: https://brson.github.io/2016/11/30/starting-with-error-chain
 [error-chain]: https://docs.rs/error-chain/
-[Rust Libz Blitz]: https://internals.rust-lang.org/t/rust-libz-blitz/5184
 [crates.io]: https://crates.io
 [docs.rs]: https://docs.rs
 [Cargo.toml]: http://doc.crates.io/manifest.html
 [`cargo-edit`]: https://github.com/killercup/cargo-edit
+[awesome-rust-libs]: https://github.com/rust-unofficial/awesome-rust#libraries
