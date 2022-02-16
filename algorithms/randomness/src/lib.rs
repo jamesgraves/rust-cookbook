@@ -15,7 +15,7 @@ mod tests {
 
         if ! output.status.success() {
             let s = String::from_utf8_lossy(&output.stderr);
-            panic!("basic_usage failed and stderr was:\n{}", s);
+            panic!("{example_name} failed and stderr was:\n{}", s);
         }
     }
 
@@ -32,6 +32,26 @@ mod tests {
     #[test]
     fn uniform_distribution() {
         run_example("uniform_distribution");
+    }
+
+    #[test]
+    fn generate_password() {
+        run_example("generate_password");
+    }
+
+    #[test]
+    fn normal_distribution() {
+        run_example("normal_distribution");
+    }
+
+    #[test]
+    fn random_string() {
+        run_example("random_string");
+    }
+
+    #[test]
+    fn tuple_distribution() {
+        run_example("tuple_distribution");
     }
 }
 
