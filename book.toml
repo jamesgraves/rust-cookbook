@@ -3,7 +3,7 @@
 title = "Rust Cookbook"
 description = "Collection of useful Rust code examples"
 authors = ["Rust Language Community"]
-edition = "2018"
+edition = "2021"
 multilingual = false
 language = "en"
 src = "src"
