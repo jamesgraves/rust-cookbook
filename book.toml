@@ -24,3 +24,6 @@ boost-hierarchy = 2
 boost-paragraph = 1
 expand = true
 heading-split-level = 2
+
+[rust]
+edition = "2021"
