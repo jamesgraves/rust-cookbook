@@ -5,7 +5,7 @@
 Generates a random value within half-open `[0, 10)` range (not including `10`) with [`Rng::gen_range`].
 
 ```rust
-{{#include ../../../algorithms/randomness/examples/gen_range.rs}}
+{{#include examples/gen_range.rs}}
 ```
 
 [`Uniform`] can obtain values with [uniform distribution].
@@ -13,7 +13,7 @@ This has the same effect, but may be faster when repeatedly generating numbers
 in the same range.
 
 ```rust
-{{#include ../../../algorithms/randomness/examples/uniform_distribution.rs}}
+{{#include examples/uniform_distribution.rs}}
 ```
 
 [`Uniform`]: https://docs.rs/rand/*/rand/distributions/uniform/struct.Uniform.html

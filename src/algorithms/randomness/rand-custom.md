@@ -7,7 +7,7 @@ Implements the [`Distribution`] trait on type Point for the [`Standard`]
 type in order to allow random generation.
 
 ```rust
-{{#include ../../../algorithms/randomness/examples/tuple_distribution.rs}}
+{{#include examples/tuple_distribution.rs}}
 ```
 
 [`Distribution`]: https://docs.rs/rand/*/rand/distributions/trait.Distribution.html

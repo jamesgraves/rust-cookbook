@@ -9,7 +9,7 @@ type, and floating point numbers are uniformly distributed from 0 up to but not
 including 1.
 
 ```rust
-{{#include ../../../algorithms/randomness/examples/basic_usage.rs}}
+{{#include examples/basic_usage.rs}}
 ```
 
 [`rand::Rng`]: https://docs.rs/rand/*/rand/trait.Rng.html

@@ -13,7 +13,7 @@ The [distributions available are documented here][rand-distributions].
 An example using the [`Normal`] distribution is shown below.
 
 ```rust
-{{#include ../../../algorithms/randomness/examples/normal_distribution.rs}}
+{{#include examples/normal_distribution.rs}}
 ```
 
 [`Distribution::sample`]: https://docs.rs/rand/*/rand/distributions/trait.Distribution.html#tymethod.sample
