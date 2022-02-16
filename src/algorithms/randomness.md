@@ -1,5 +1,11 @@
 # Generate Random Values
 
+Add these crates to your own project:
+
+```
+cargo add rand rand_distr
+```
+
 {{#include randomness/rand.md}}
 
 {{#include randomness/rand-range.md}}

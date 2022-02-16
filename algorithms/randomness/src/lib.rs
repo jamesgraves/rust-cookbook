@@ -23,6 +23,16 @@ mod tests {
     fn basic_usage() {
         run_example("basic_usage");
     }
+
+    #[test]
+    fn gen_range() {
+        run_example("gen_range");
+    }
+
+    #[test]
+    fn uniform_distribution() {
+        run_example("uniform_distribution");
+    }
 }
 
 
