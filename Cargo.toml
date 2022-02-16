@@ -1,4 +1,4 @@
 [workspace]
 members = [
-	"algorithms/randomness",
+	"src/algorithms/randomness",
 ]
