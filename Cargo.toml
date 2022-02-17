@@ -3,4 +3,5 @@ members = [
 	"src/algorithms/randomness",
 	"src/algorithms/sorting",
 	"src/cookbook_utils",
+	"src/cli/ansi_terminal",
 ]
