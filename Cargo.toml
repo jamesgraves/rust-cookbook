@@ -1,4 +1,6 @@
 [workspace]
 members = [
 	"src/algorithms/randomness",
+	"src/algorithms/sorting",
+	"src/cookbook_utils",
 ]
