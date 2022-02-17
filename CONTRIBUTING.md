@@ -34,15 +34,28 @@ changes you make to the cookbook source will be automatically rebuilt and
 visible in the browser, so it can be helpful to keep this window open while
 editing.
 
-All examples in the cookbook are tested with [skeptic], a tool for
-testing arbitrary markdown documentation in a style similar to
-rustdoc.
+Individual examples can also be run from the command line:
 
-To run the cookbook test suite:
+```
+cargo run --example random_string
+```
+
+To run the cookbook test suite for all examples:
 
 ```
 cargo test
 ```
+
+You can also go into an individual topic directory, and run the tests just
+for that:
+
+```
+cd src/algorithms/randomness
+cargo test
+```
+
+The unit tests just run each of the examples, which will exit with a non-zero
+status if there was a problem.
 
 ## Linters
 
