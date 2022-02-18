@@ -16,7 +16,7 @@ No worries if anything in these lists is unclear. Just submit the PR and ask awa
 - [ ] link check runs without errors `link-checker ./book`
 - [ ] non rendered items are in sorted order (links, reference, identifiers, Cargo.toml)
 - [ ] links to docs.rs have wildcard version `https://docs.rs/tar/*/tar/struct.Entry.html`
-- [ ] example has standard [error handling](https://rust-lang-nursery.github.io/rust-cookbook/about.html#a-note-about-error-handling)
+- [ ] example has standard [error handling](https://jamesgraves.github.io/rust-cookbook/about.html#a-note-about-error-handling)
 - [ ] code identifiers in description are in hyperlinked backticks
 ```markdown
 [`Entry::unpack`]: https://docs.rs/tar/*/tar/struct.Entry.html#method.unpack

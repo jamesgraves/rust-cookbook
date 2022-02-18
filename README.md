@@ -17,7 +17,7 @@ new cargo projects. They are tested and guaranteed to work.
 If you'd like to read it locally:
 
 ```bash
-$ git clone https://github.com/rust-lang-nursery/rust-cookbook
+$ git clone https://github.com/jamesgraves/rust-cookbook
 $ cd rust-cookbook
 $ cargo install mdbook --vers "0.4.15"
 $ mdbook serve --open
@@ -31,7 +31,7 @@ $ start .\book\index.html    # windows
 $ open ./book/index.html     # mac
 ```
 
-[Read it here]: https://rust-lang-nursery.github.io/rust-cookbook
+[Read it here]: https://jamesgraves.github.io/rust-cookbook
 [Rust]: https://www.rust-lang.org/
 
 ## Contributing
@@ -40,9 +40,7 @@ This project is intended to be easy for new [Rust] programmers to
 contribute to, and an easy way to get involved with the Rust
 community. It needs and welcomes help.
 
-For details see [CONTRIBUTING.md] on GitHub.
-
-[CONTRIBUTING.md]: https://github.com/rust-lang-nursery/rust-cookbook/blob/master/CONTRIBUTING.md
+For details see [CONTRIBUTING.md](CONTRIBUTING.md) on GitHub.
 
 ## License [![CC0-badge]][CC0-deed]
 
