@@ -5,4 +5,5 @@ members = [
 	"src/cookbook_utils",
 	"src/cli/ansi_terminal",
 	"src/cli/arguments",
+	"src/compression/tar",
 ]
