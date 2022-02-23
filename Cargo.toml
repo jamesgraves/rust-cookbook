@@ -7,4 +7,5 @@ members = [
 	"src/cli/arguments",
 	"src/compression/tar",
 	"src/concurrency/parallel",
+	"src/concurrency/thread",
 ]
