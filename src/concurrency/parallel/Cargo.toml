@@ -1,0 +1,16 @@
+[package]
+name = "parallel"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+doctest = false
+
+[dependencies]
+glob = "0.3.0"
+image = "0.24.1"
+rand = "0.8.5"
+rayon = "1.5.1"
+
+[dev-dependencies]
+cookbook_utils = { path = "../../cookbook_utils" }

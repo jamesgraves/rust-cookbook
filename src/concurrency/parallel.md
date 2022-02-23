@@ -5,6 +5,11 @@ Add the `rayon` crate to your own project:
 ```
 cargo add rayon
 ```
+Other crates needed for the example code:
+
+```
+cargo add glob rand image
+```
 
 {{#include parallel/rayon-iter-mut.md}}
 
