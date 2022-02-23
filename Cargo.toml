@@ -6,4 +6,5 @@ members = [
 	"src/cli/ansi_terminal",
 	"src/cli/arguments",
 	"src/compression/tar",
+	"src/concurrency/parallel",
 ]

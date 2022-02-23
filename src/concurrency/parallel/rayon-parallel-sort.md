@@ -4,25 +4,23 @@
 
 This example will sort in parallel a vector of Strings.
 
-Allocate a vector of empty Strings. `par_iter_mut().for_each` populates random
+Allocate a vector of empty Strings. `par_iter_mut().for_each()` populates random
 values in parallel.  Although [multiple options]
 exist to sort an enumerable data type, [`par_sort_unstable`]
 is usually faster than [stable sorting] algorithms.
 
-```rust,edition2018
+```rust
+{{#include examples/rayon-parallel-sort.rs}}
+```
 
-use rand::{Rng, thread_rng};
-use rand::distributions::Alphanumeric;
-use rayon::prelude::*;
+To truly exercise multiple threads of execution on multiple processor cores,
+change `word_count` to be 100,000 or larger. Compare the execution time and CPU load
+versus the single threaded versions of the same vector operations.
 
-fn main() {
-  let mut vec = vec![String::new(); 100_000];
-  vec.par_iter_mut().for_each(|p| {
-    let mut rng = thread_rng();
-    *p = (0..5).map(|_| rng.sample(&Alphanumeric)).collect()
-  });
-  vec.par_sort_unstable();
-}
+If the Rust Cookbook has been cloned, run:
+
+```
+cargo run --example rayon-parallel-sort
 ```
 
 [`par_sort_unstable`]: https://docs.rs/rayon/*/rayon/slice/trait.ParallelSliceMut.html#method.par_sort_unstable

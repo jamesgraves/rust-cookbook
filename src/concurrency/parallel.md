@@ -1,5 +1,11 @@
 # Parallel Tasks
 
+Add the `rayon` crate to your own project:
+
+```
+cargo add rayon
+```
+
 {{#include parallel/rayon-iter-mut.md}}
 
 {{#include parallel/rayon-any-all.md}}
