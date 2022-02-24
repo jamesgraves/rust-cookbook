@@ -9,4 +9,5 @@ members = [
 	"src/concurrency/parallel",
 	"src/concurrency/thread",
 	"src/cryptography/encryption",
+	"src/cryptography/hashing",
 ]
