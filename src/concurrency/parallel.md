@@ -5,6 +5,7 @@ Add the `rayon` crate to your own project:
 ```
 cargo add rayon
 ```
+
 Other crates needed for the example code:
 
 ```

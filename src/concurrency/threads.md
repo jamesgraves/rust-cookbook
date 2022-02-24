@@ -9,7 +9,7 @@ cargo add crossbeam crossbeam_channel
 Other crates needed for examples:
 
 ```
-cargo add lazy_static threadpool num image walkdir ring num_cpus
+cargo add image lazy_static num num_cpus ring threadpool walkdir
 ```
 
 {{#include thread/crossbeam-spawn.md}}
