@@ -8,4 +8,5 @@ members = [
 	"src/compression/tar",
 	"src/concurrency/parallel",
 	"src/concurrency/thread",
+	"src/cryptography/encryption",
 ]
