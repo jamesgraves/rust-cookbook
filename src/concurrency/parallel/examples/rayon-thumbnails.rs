@@ -4,7 +4,7 @@ use std::process::exit;
 use std::fs::create_dir_all;
 
 use glob::{glob_with, MatchOptions};
-use image::imageops::{FilterType};
+use image::imageops::FilterType;
 use rayon::prelude::*;
 
 fn main() -> Result<(), Box<dyn Error>> {
@@ -26,13 +26,11 @@ fn main() -> Result<(), Box<dyn Error>> {
     let image_failures: Vec<_> = files
         .par_iter()
         .map(|path| {
-            make_thumbnail(path, thumb_dir, 300)
+            make_thumbnail(path, thumb_dir, 100)
                 .map_err(|e| println!("{e}: path: {}", path.display()))
         })
         .filter_map(|x| x.err())
         .collect();
-
-    image_failures.iter().for_each(|x| println!("{x}"));
 
     println!("{} thumbnails saved successfully", files.len() - image_failures.len());
     Ok(())
