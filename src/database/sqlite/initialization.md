@@ -5,34 +5,18 @@
 Use the `rusqlite` crate to open SQLite databases. See
 [crate][documentation] for compiling on Windows.
 
-[`Connection::open`] will create the database if it doesn't already exist.
+[`Connection::open`] will create the database file `cats.db` in the
+current working directory if it doesn't already exist.
 
-```rust,edition2018,no_run
-use rusqlite::{Connection, Result};
-use rusqlite::NO_PARAMS;
+Then the two tables are created if they don't already exist. The color
+of a specific cat must be defined in the `cat_colors` table before a `cat`
+row is inserted.
 
-fn main() -> Result<()> {
-    let conn = Connection::open("cats.db")?;
 
-    conn.execute(
-        "create table if not exists cat_colors (
-             id integer primary key,
-             name text not null unique
-         )",
-        NO_PARAMS,
-    )?;
-    conn.execute(
-        "create table if not exists cats (
-             id integer primary key,
-             name text not null,
-             color_id integer not null references cat_colors(id)
-         )",
-        NO_PARAMS,
-    )?;
-
-    Ok(())
-}
+```rust
+{{#include examples/initialization.rs}}
 ```
+
 
 [`Connection::open`]: https://docs.rs/rusqlite/*/rusqlite/struct.Connection.html#method.open
 

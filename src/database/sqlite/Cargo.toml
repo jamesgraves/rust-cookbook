@@ -1,0 +1,13 @@
+[package]
+name = "sqlite-example"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+doctest = false
+
+[dependencies]
+rusqlite = "0.26.3"
+
+[dev-dependencies]
+cookbook_utils = { path = "../../cookbook_utils" }

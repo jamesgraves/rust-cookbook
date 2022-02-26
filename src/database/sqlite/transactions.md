@@ -2,7 +2,8 @@
 
 [![rusqlite-badge]][rusqlite] [![cat-database-badge]][cat-database]
 
-[`Connection::open`] will open the `cats.db` database from the top recipe.
+[`Connection::open`] will open the `cats.db` database from the top recipe, and
+assumes the `cat_colors` table exists.
 
 Begin a transaction with [`Connection::transaction`]. Transactions will
 roll back unless committed explicitly with [`Transaction::commit`].
@@ -11,41 +12,15 @@ In the following example, colors add to a table having
 a unique constraint on the color name. When an attempt to insert
 a duplicate color is made, the transaction rolls back.
 
+At the end of `successful_tx()` the `cat_colors` table should have
+exactly two rows, with the colors 'lavender' and 'blue'.
 
-```rust,edition2018,no_run
-use rusqlite::{Connection, Result, NO_PARAMS};
+At the end of `rolled_back_tx()`, the `cat_colors` table should still
+have just 'lavender' and 'blue', since the the `DELETE` and the
+`INSERT`s will not have been committed.
 
-fn main() -> Result<()> {
-    let mut conn = Connection::open("cats.db")?;
-
-    successful_tx(&mut conn)?;
-
-    let res = rolled_back_tx(&mut conn);
-    assert!(res.is_err());
-
-    Ok(())
-}
-
-fn successful_tx(conn: &mut Connection) -> Result<()> {
-    let tx = conn.transaction()?;
-
-    tx.execute("delete from cat_colors", NO_PARAMS)?;
-    tx.execute("insert into cat_colors (name) values (?1)", &[&"lavender"])?;
-    tx.execute("insert into cat_colors (name) values (?1)", &[&"blue"])?;
-
-    tx.commit()
-}
-
-fn rolled_back_tx(conn: &mut Connection) -> Result<()> {
-    let tx = conn.transaction()?;
-
-    tx.execute("delete from cat_colors", NO_PARAMS)?;
-    tx.execute("insert into cat_colors (name) values (?1)", &[&"lavender"])?;
-    tx.execute("insert into cat_colors (name) values (?1)", &[&"blue"])?;
-    tx.execute("insert into cat_colors (name) values (?1)", &[&"lavender"])?;
-
-    tx.commit()
-}
+```rust
+{{#include examples/transactions.rs}}
 ```
 
 [`Connection::transaction`]: https://docs.rs/rusqlite/*/rusqlite/struct.Connection.html#method.transaction

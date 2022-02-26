@@ -10,4 +10,5 @@ members = [
 	"src/concurrency/thread",
 	"src/cryptography/encryption",
 	"src/cryptography/hashing",
+	"src/database/sqlite",
 ]
