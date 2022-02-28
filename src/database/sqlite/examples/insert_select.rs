@@ -11,8 +11,8 @@ fn main() -> Result<()> {
     let conn = Connection::open("cats.db")?;
 
     // Delete all rows from the cats and cat_colors tables.
-    conn.execute("delete from cat_colors", [])?;
     conn.execute("delete from cats", [])?;
+    conn.execute("delete from cat_colors", [])?;
 
     let mut cat_colors = HashMap::new();
     cat_colors.insert(String::from("Blue"), vec!["Tigger", "Sammy"]);
