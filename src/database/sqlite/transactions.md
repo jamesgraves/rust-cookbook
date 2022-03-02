@@ -8,7 +8,7 @@ assumes the `cat_colors` table exists.
 Begin a transaction with [`Connection::transaction`]. Transactions will
 roll back unless committed explicitly with [`Transaction::commit`].
 
-In the following example, colors add to a table having
+In the following example, colors are added to a table having
 a unique constraint on the color name. When an attempt to insert
 a duplicate color is made, the transaction rolls back.
 

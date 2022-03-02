@@ -14,11 +14,11 @@ fn main() -> Result<()> {
     conn.execute("delete from cats", [])?;
     conn.execute("delete from cat_colors", [])?;
 
-    let mut cat_colors = HashMap::new();
-    cat_colors.insert(String::from("Blue"), vec!["Tigger", "Sammy"]);
-    cat_colors.insert(String::from("Black"), vec!["Oreo", "Biscuit"]);
+    let mut cat_data = HashMap::new();
+    cat_data.insert(String::from("Blue"), vec!["Tigger", "Sammy"]);
+    cat_data.insert(String::from("Black"), vec!["Oreo", "Biscuit"]);
 
-    for (color, catnames) in &cat_colors {
+    for (color, catnames) in &cat_data {
         conn.execute(
             "INSERT INTO cat_colors (name) values (?1)",
             &[&color.to_string()],
