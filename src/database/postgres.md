@@ -1,9 +1,17 @@
 # Working with Postgres
 
-{{#include postgres/create_tables.md}}
+Add this crate to your own project:
 
-{{#include postgres/insert_query_data.md}}
+```
+cargo add postgres
+```
 
-{{#include postgres/aggregate_data.md}}
+{{#include postgres_db/installing_postgresql.md}}
+
+{{#include postgres_db/create_tables.md}}
+
+{{#include postgres_db/insert_query_data.md}}
+
+{{#include postgres_db/aggregate_data.md}}
 
 {{#include ../links.md}}
