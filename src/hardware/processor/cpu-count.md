@@ -2,6 +2,12 @@
 
 [![num_cpus-badge]][num_cpus] [![cat-hardware-support-badge]][cat-hardware-support]
 
+Add the `num_cpus` crate to your own project:
+
+```
+cargo add num_cpus
+```
+
 Shows the number of logical CPU cores in current machine using [`num_cpus::get`].
 
 ```rust
