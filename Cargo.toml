@@ -11,4 +11,5 @@ members = [
 	"src/cryptography/encryption",
 	"src/cryptography/hashing",
 	"src/database/sqlite",
+	"src/file/dir",
 ]

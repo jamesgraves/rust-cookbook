@@ -1,18 +1,24 @@
 # Directory Traversal
 
-{{#include dir/modified.md}}
+Add these crates to your own project:
 
-{{#include dir/loops.md}}
+```
+cargo add glob walkdir
+```
+
+{{#include dir/find-all-png-files.md}}
+
+{{#include dir/calc-file-sizes.md}}
+
+{{#include dir/file-modification-time.md}}
+
+{{#include dir/find-fs-loops.md}}
 
 {{#include dir/duplicate-name.md}}
 
 {{#include dir/find-file.md}}
 
-{{#include dir/skip-dot.md}}
-
-{{#include dir/sizes.md}}
-
-{{#include dir/png.md}}
+{{#include dir/skip-dot-files.md}}
 
 {{#include dir/ignore-case.md}}
 

@@ -10,45 +10,8 @@ last modification. [`Duration::as_secs`] converts the time to seconds and
 compared with 24 hours (24 * 60 * 60 seconds). [`Metadata::is_file`] filters
 out directories.
 
-```rust,edition2018
-# use error_chain::error_chain;
-#
-use std::{env, fs};
-
-# error_chain! {
-#     foreign_links {
-#         Io(std::io::Error);
-#         SystemTimeError(std::time::SystemTimeError);
-#     }
-# }
-#
-fn main() -> Result<()> {
-    let current_dir = env::current_dir()?;
-    println!(
-        "Entries modified in the last 24 hours in {:?}:",
-        current_dir
-    );
-
-    for entry in fs::read_dir(current_dir)? {
-        let entry = entry?;
-        let path = entry.path();
-
-        let metadata = fs::metadata(&path)?;
-        let last_modified = metadata.modified()?.elapsed()?.as_secs();
-
-        if last_modified < 24 * 3600 && metadata.is_file() {
-            println!(
-                "Last modified: {:?} seconds, is read only: {:?}, size: {:?} bytes, filename: {:?}",
-                last_modified,
-                metadata.permissions().readonly(),
-                metadata.len(),
-                path.file_name().ok_or("No filename")?
-            );
-        }
-    }
-
-    Ok(())
-}
+```rust
+{{#include examples/file-modification-time.rs}}
 ```
 
 [`DirEntry::path`]: https://doc.rust-lang.org/std/fs/struct.DirEntry.html#method.path

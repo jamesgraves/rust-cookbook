@@ -1,18 +1,8 @@
-## Find loops for a given path
-
-[![same_file-badge]][same_file] [![cat-filesystem-badge]][cat-filesystem]
-
-Use [`same_file::is_same_file`] to detect loops for a given path.
-For example, a loop could be created on a Unix system via symlinks:
-```bash
-mkdir -p /tmp/foo/bar/baz
-ln -s /tmp/foo/  /tmp/foo/bar/baz/qux
-```
-The following would assert that a loop exists.
-
-```rust,edition2018,no_run
+use std::error::Error;
 use std::io;
 use std::path::{Path, PathBuf};
+use std::fs::{create_dir_all, remove_file};
+use std::os::unix::fs::symlink;
 use same_file::is_same_file;
 
 fn contains_loop<P: AsRef<Path>>(path: P) -> io::Result<Option<(PathBuf, PathBuf)>> {
@@ -28,7 +18,12 @@ fn contains_loop<P: AsRef<Path>>(path: P) -> io::Result<Option<(PathBuf, PathBuf
     return Ok(None);
 }
 
-fn main() {
+fn main() -> Result<(), Box<dyn Error>>{
+
+    create_dir_all("/tmp/foo/bar/baz")?;
+    let _ = remove_file("/tmp/foo/bar/baz/qux"); // Dont't care if the file doesn't exist yet.
+    symlink("/tmp/foo", "/tmp/foo/bar/baz/qux")?;
+
     assert_eq!(
         contains_loop("/tmp/foo/bar/baz/qux/bar/baz").unwrap(),
         Some((
@@ -36,7 +31,6 @@ fn main() {
             PathBuf::from("/tmp/foo/bar/baz/qux")
         ))
     );
-}
-```
 
-[`same_file::is_same_file`]: https://docs.rs/same-file/*/same_file/fn.is_same_file.html
+    Ok(())
+}

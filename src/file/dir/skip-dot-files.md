@@ -10,24 +10,8 @@ Uses [`filter_entry`] to descend recursively into entries passing the
 Root dir `"."` yields through [`WalkDir::depth`] usage in `is_not_hidden`
 predicate.
 
-```rust,edition2018,no_run
-use walkdir::{DirEntry, WalkDir};
-
-fn is_not_hidden(entry: &DirEntry) -> bool {
-    entry
-         .file_name()
-         .to_str()
-         .map(|s| entry.depth() == 0 || !s.starts_with("."))
-         .unwrap_or(false)
-}
-
-fn main() {
-    WalkDir::new(".")
-        .into_iter()
-        .filter_entry(|e| is_not_hidden(e))
-        .filter_map(|v| v.ok())
-        .for_each(|x| println!("{}", x.path().display()));
-}
+```rust,no_run
+{{#include examples/skip-dot-files.rs}}
 ```
 
 [`filter_entry`]: https://docs.rs/walkdir/*/walkdir/struct.IntoIter.html#method.filter_entry
