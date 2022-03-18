@@ -40,22 +40,27 @@ Individual examples can also be run from the command line:
 cargo run --example random_string
 ```
 
-To run the cookbook test suite for all examples:
+To run the cookbook test suite for ***all*** examples:
 
 ```
 cargo test
 ```
 
-You can also go into an individual topic directory, and run the tests just
-for that:
+Note that some tests, such as Sqlite3, require an operating system
+package to be installed. For PostgreSQL, the unit tests require an
+installed and running database server, as mentioned in the
+documentation. So these unit tests will not pass. Other examples will
+require additional software to pass the unit tests.
+
+Tests can be run for the individual topics (cargo workspaces):
 
 ```
 cd src/algorithms/randomness
 cargo test
 ```
 
-The unit tests just run each of the examples, which will exit with a non-zero
-status if there was a problem.
+The unit tests just run each of the examples as a standalone program,
+which will exit with a non-zero status if there was a problem or panic.
 
 ## Linters
 
@@ -277,12 +282,17 @@ Examples should be simple and obvious enough that an experienced dev
 do not need comments.
 
 Examples should compile without warnings, clippy lint warnings, or panics.
-The code should be formatted by rustfmt.  Hide all error boilerplate and
-parts of the sample that do not accomplish the subject of the example.
+The code should be formatted by rustfmt. All code examples shall be complete,
+and can be run standalone.
 
-Mark examples that depend on external systems with `no_run` or remove them
-if they are not required for the example.  Avoid inline comments, preferring
-explanation in the description.
+All examples shall be run via unit tests.  Some examples that require external
+services (such as a running PostgreSQL database), require non-standard
+OS packages to be installed (PostgreSQL, Sqlite3) shall be excluded from the
+continuous integration testing.  These examples should be marked as
+`no_run` for that code block, and instructions should be included for running
+the examples locally.
+
+Avoid inline comments, preferring explanation in the description.
 
 > ```rust
 > extern crate rand;
