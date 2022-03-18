@@ -13,4 +13,5 @@ members = [
 	"src/database/postgres",
 	"src/database/sqlite",
 	"src/file/dir",
+	"src/hardware/processor",
 ]
