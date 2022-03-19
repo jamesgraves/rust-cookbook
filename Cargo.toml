@@ -12,6 +12,7 @@ members = [
 	"src/cryptography/hashing",
 	"src/database/postgres",
 	"src/database/sqlite",
+	"src/data_structures/bitfield",
 	"src/file/dir",
 	"src/hardware/processor",
 	"src/mem/global_static",
