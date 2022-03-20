@@ -13,6 +13,7 @@ members = [
 	"src/database/postgres",
 	"src/database/sqlite",
 	"src/data_structures/bitfield",
+	"src/datetime/duration",
 	"src/file/dir",
 	"src/hardware/processor",
 	"src/mem/global_static",
