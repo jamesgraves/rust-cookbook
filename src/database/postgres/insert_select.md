@@ -6,7 +6,7 @@ The example will connect to the database, insert some cat data, and then
 print the result.
 
 ```rust,no_run
-{{#include examples/insert_select.rs}}
+{{#include examples/pg_insert_select.rs}}
 ```
 
 [`Client::connect`] will open the local database `cats`, to access the two tables created in the earlier recipe.
@@ -20,9 +20,10 @@ using the [`execute`] method of `Client`.
 
 Arguments passed to the SQL statement are $1, $2, $3, etc. which
 correspond to the items in the slice reference. Note that the
-parenthesis `()` are part of the SQL `INSERT` statement syntax.
+parenthesis `()` are part of the SQL `INSERT` statement syntax and not
+required for the argument substitution.
 
-First, a new color is inserted into the `cat_colors` table. After a
+A new color is inserted into the `cat_colors` table. After a
 record for a color is inserted, a query is performed to get the row id
 of that color using [`query_one`]. Then this `color_row_id` is used
 to reference the new color while inserting data into the `cats` table.

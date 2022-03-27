@@ -20,7 +20,7 @@ have just 'lavender' and 'blue', since the the `DELETE` and the
 `INSERT`s will not have been committed.
 
 ```rust,no_run
-{{#include examples/transactions.rs}}
+{{#include examples/pg_transactions.rs}}
 ```
 
 [`Client::transaction`]: https://docs.rs/postgres/latest/postgres/struct.Client.html#method.transaction

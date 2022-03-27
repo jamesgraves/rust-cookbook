@@ -1,3 +1,7 @@
+## Installing PostgreSQL
+
+[![postgres-badge]][postgres] [![cat-database-badge]][cat-database]
+
 
 Before running these examples that access a live Postgresql database,
 you will need to:
@@ -46,8 +50,10 @@ This is the actual SQL statement to set the `postgres` *database* user password:
 ALTER USER postgres with encrypted password 'ChangeMe99';
 ```
 
-Be sure to change the password for `postgres` before putting a database
-server into production.
+Note that does not change the `postgres` system account password.
+
+Be sure to change the password for both the database and system
+`postgres` accounts before putting a database server into production.
 
 # Create the `cats` test database
 
