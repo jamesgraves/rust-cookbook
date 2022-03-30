@@ -15,6 +15,7 @@ members = [
 	"src/data_structures/bitfield",
 	"src/datetime/duration",
 	"src/file/dir",
+	"src/file/read-write",
 	"src/hardware/processor",
 	"src/mem/global_static",
 ]

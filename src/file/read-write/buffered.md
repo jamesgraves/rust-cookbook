@@ -8,26 +8,12 @@ time with the [`Lines`] iterator created by
 trait.  [`File::create`] opens a [`File`] for writing, [`File::open`] for
 reading.
 
-```rust,edition2018
-use std::fs::File;
-use std::io::{Write, BufReader, BufRead, Error};
-
-fn main() -> Result<(), Error> {
-    let path = "lines.txt";
-
-    let mut output = File::create(path)?;
-    write!(output, "Rust\n💖\nFun")?;
-
-    let input = File::open(path)?;
-    let buffered = BufReader::new(input);
-
-    for line in buffered.lines() {
-        println!("{}", line?);
-    }
-
-    Ok(())
-}
+```rust
+{{#include examples/buffered.rs}}
 ```
+
+Buffered reading / writing is usually more efficient and faster than
+regular input / output operations.
 
 [`BufRead::lines`]: https://doc.rust-lang.org/std/io/trait.BufRead.html#method.lines
 [`BufRead`]: https://doc.rust-lang.org/std/io/trait.BufRead.html

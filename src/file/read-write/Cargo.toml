@@ -1,0 +1,14 @@
+[package]
+name = "read-write"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+doctest = false
+
+[dependencies]
+memmap2 = "0.5.3"
+same-file = "1.0.6"
+
+[dev-dependencies]
+cookbook_utils = { path = "../../cookbook_utils" }

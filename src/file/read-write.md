@@ -1,6 +1,6 @@
 # Read & Write
 
-{{#include read-write/read-file.md}}
+{{#include read-write/buffered.md}}
 
 {{#include read-write/same-file.md}}
 
