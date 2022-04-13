@@ -3,12 +3,12 @@ use std::sync::mpsc::{channel};
 use threadpool::ThreadPool;
 use num::complex::Complex;
 use num_cpus;
-use image::{ImageBuffer, Pixel, Rgb};
+use image::{ImageBuffer, Rgba};
 
 
  // Function converting intensity values to RGB
  // Based on http://www.efg2.com/Lab/ScienceAndEngineering/Spectra.htm
-fn wavelength_to_rgb(wavelength: u32) -> Rgb<u8> {
+fn wavelength_to_rgba(wavelength: u32) -> Rgba<u8> {
     let wave = wavelength as f32;
 
     let (r, g, b) = match wavelength {
@@ -28,7 +28,7 @@ fn wavelength_to_rgb(wavelength: u32) -> Rgb<u8> {
     };
 
     let (r, g, b) = (normalize(r, factor), normalize(g, factor), normalize(b, factor));
-    Rgb::from_channels(r, g, b, 0)
+    Rgba([r, g, b, 0])
 }
 
  // Maps Julia set distance estimation to intensity values
@@ -72,7 +72,7 @@ fn main() -> Result<(), Box<dyn Error>> {
         let tx = tx.clone();
         pool.execute(move || for x in 0..width {
                          let i = julia(c, x, y, width, height, iterations);
-                         let pixel = wavelength_to_rgb(380 + i * 400 / iterations);
+                         let pixel = wavelength_to_rgba(380 + i * 400 / iterations);
                          tx.send((x, y, pixel)).expect("Could not send data!");
                      });
     }
