@@ -8,24 +8,10 @@ mod tests {
 
     use cookbook_utils::*;
 
-    // `touch_file()` and `look_for_file()` are needed to sequence the
-    // unit tests.
     #[test]
-    fn postgres_initialization() {
+    fn postgres_sequence() {
         run_example("pg_initialization");
-        touch_file("initialization_complete");
-    }
-
-    #[test]
-    fn postgres_insert_select() {
-        look_for_file("initialization_complete", 20);
         run_example("pg_insert_select");
-        touch_file("insert_select_complete");
-    }
-
-    #[test]
-    fn postgres_transactions() {
-        look_for_file("insert_select_complete", 40);
         run_example("pg_transactions");
     }
 }
