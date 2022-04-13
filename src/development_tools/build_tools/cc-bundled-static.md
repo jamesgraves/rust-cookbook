@@ -17,76 +17,25 @@ For more complex build requirements, [`cc::Build`][cc-build] offers a full suite
 ### `Cargo.toml`
 
 ```toml
-[package]
-...
-build = "build.rs"
-
-[build-dependencies]
-cc = "1"
-
-[dependencies]
-error-chain = "0.11"
+{{#include cc-bundled-static/Cargo.toml}}
 ```
 
 ### `build.rs`
 
-```rust,edition2018,no_run
-fn main() {
-    cc::Build::new()
-        .file("src/hello.c")
-        .compile("hello");   // outputs `libhello.a`
-}
+```rust,no_run
+{{#include cc-bundled-static/build.rs}}
 ```
 
 ### `src/hello.c`
 
 ```c
-#include <stdio.h>
-
-
-void hello() {
-    printf("Hello from C!\n");
-}
-
-void greet(const char* name) {
-    printf("Hello, %s!\n", name);
-}
+{{#include cc-bundled-static/src/hello.c}}
 ```
 
-### `src/main.rs`
+### `cc-bundled-static/src/main.rs`
 
-```rust,edition2018,ignore
-use error_chain::error_chain;
-use std::ffi::CString;
-use std::os::raw::c_char;
-
-error_chain! {
-    foreign_links {
-        NulError(::std::ffi::NulError);
-        Io(::std::io::Error);
-    }
-}
-fn prompt(s: &str) -> Result<String> {
-    use std::io::Write;
-    print!("{}", s);
-    std::io::stdout().flush()?;
-    let mut input = String::new();
-    std::io::stdin().read_line(&mut input)?;
-    Ok(input.trim().to_string())
-}
-
-extern {
-    fn hello();
-    fn greet(name: *const c_char);
-}
-
-fn main() -> Result<()> {
-    unsafe { hello() }
-    let name = prompt("What's your name? ")?;
-    let c_name = CString::new(name)?;
-    unsafe { greet(c_name.as_ptr()) }
-    Ok(())
-}
+```rust,no_run
+{{#include cc-bundled-static/src/main.rs}}
 ```
 
 [`cc::Build::define`]: https://docs.rs/cc/*/cc/struct.Build.html#method.define
