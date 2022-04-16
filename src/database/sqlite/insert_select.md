@@ -8,7 +8,7 @@ This example inserts data into `cat_colors` and `cats` tables using the [`execut
 
 Then, a query is executed using [`query_map`] method of [`statement`], and then the results are printed.
 
-```rust
+```rust,ignore
 {{#include examples/insert_select.rs}}
 ```
 

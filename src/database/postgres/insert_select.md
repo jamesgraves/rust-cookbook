@@ -5,7 +5,7 @@
 The example will connect to the database, insert some cat data, and then
 print the result.
 
-```rust,no_run
+```rust,ignore
 {{#include examples/pg_insert_select.rs}}
 ```
 

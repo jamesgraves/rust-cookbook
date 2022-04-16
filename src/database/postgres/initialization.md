@@ -12,7 +12,7 @@ Then the two tables are created if they don't already exist. The color
 of a specific cat must be defined in the `cat_colors` table before a `cat`
 row is inserted which uses that color.
 
-```rust,no_run
+```rust,ignore
 {{#include examples/pg_initialization.rs}}
 ```
 

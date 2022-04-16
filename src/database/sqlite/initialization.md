@@ -13,7 +13,7 @@ of a specific cat must be defined in the `cat_colors` table before a `cat`
 row is inserted.
 
 
-```rust
+```rust,ignore
 {{#include examples/initialization.rs}}
 ```
 

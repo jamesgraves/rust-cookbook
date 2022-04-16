@@ -19,7 +19,7 @@ At the end of `rolled_back_tx()`, the `cat_colors` table should still
 have just 'lavender' and 'blue', since the the `DELETE` and the
 `INSERT`s will not have been committed.
 
-```rust,no_run
+```rust,ignore
 {{#include examples/pg_transactions.rs}}
 ```
 
