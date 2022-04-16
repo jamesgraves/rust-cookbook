@@ -3,62 +3,34 @@
 [![cc-badge]][cc] [![cat-development-tools-badge]][cat-development-tools]
 
 It is simple to build bundled C code with custom defines using [`cc::Build::define`].
-The method takes an [`Option`] value, so it is possible to create defines such as `#define APP_NAME "foo"`
+The method takes an [`Option`] value, so it is possible to create defines such as `#define APP_NAME "a cookbook demo"`
 as well as `#define WELCOME` (pass `None` as the value for a value-less define). This example builds
-a bundled C file with dynamic defines set in `build.rs` and prints "**Welcome to foo - version 1.0.2**"
+a bundled C file with dynamic defines set in `build.rs` and prints "**Welcome to a cookbook demo - version 0.1.0**"
 when run. Cargo sets some [environment variables][cargo-env] which may be useful for some custom defines.
 
 
 ### `Cargo.toml`
 
 ```toml
-[package]
-...
-version = "1.0.2"
-build = "build.rs"
-
-[build-dependencies]
-cc = "1"
+{{#include cc-defines/Cargo.toml}}
 ```
 
 ### `build.rs`
 
-```rust,edition2018,no_run
-fn main() {
-    cc::Build::new()
-        .define("APP_NAME", "\"foo\"")
-        .define("VERSION", format!("\"{}\"", env!("CARGO_PKG_VERSION")).as_str())
-        .define("WELCOME", None)
-        .file("src/foo.c")
-        .compile("foo");
-}
+```rust,ignore
+{{#include cc-defines/build.rs}}
 ```
 
-### `src/foo.c`
+### `src/welcome.c`
 
 ```c
-#include <stdio.h>
-
-void print_app_info() {
-#ifdef WELCOME
-    printf("Welcome to ");
-#endif
-    printf("%s - version %s\n", APP_NAME, VERSION);
-}
+{{#include cc-defines/src/welcome.c}}
 ```
 
 ### `src/main.rs`
 
-```rust,edition2018,ignore
-extern {
-    fn print_app_info();
-}
-
-fn main(){
-    unsafe {
-        print_app_info();
-    }   
-}
+```rust,ignore
+{{#include cc-defines/src/main.rs}}
 ```
 
 [cargo-env]: https://doc.rust-lang.org/cargo/reference/environment-variables.html
