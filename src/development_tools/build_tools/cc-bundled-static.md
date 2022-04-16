@@ -22,7 +22,7 @@ For more complex build requirements, [`cc::Build`][cc-build] offers a full suite
 
 ### `build.rs`
 
-```rust,no_run
+```rust,ignore
 {{#include cc-bundled-static/build.rs}}
 ```
 
@@ -34,7 +34,7 @@ For more complex build requirements, [`cc::Build`][cc-build] offers a full suite
 
 ### `cc-bundled-static/src/main.rs`
 
-```rust,no_run
+```rust,ignore
 {{#include cc-bundled-static/src/main.rs}}
 ```
 

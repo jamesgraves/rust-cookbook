@@ -13,7 +13,7 @@ Linking a bundled C++ library is very similar to linking a bundled C library. Th
 
 ### `build.rs`
 
-```rust,no_run
+```rust,ignore
 {{#include cc-bundled-cpp/build.rs}}
 ```
 ```
@@ -26,7 +26,7 @@ Linking a bundled C++ library is very similar to linking a bundled C library. Th
 
 ### `src/main.rs`
 
-```rust,no_run
+```rust,ignore
 {{#include cc-bundled-cpp/src/main.rs}}
 ```
 
