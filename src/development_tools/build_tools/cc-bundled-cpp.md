@@ -8,49 +8,26 @@ Linking a bundled C++ library is very similar to linking a bundled C library. Th
 ### `Cargo.toml`
 
 ```toml
-[package]
-...
-build = "build.rs"
-
-[build-dependencies]
-cc = "1"
+{{#include cc-bundled-cpp/Cargo.toml}}
 ```
 
 ### `build.rs`
 
-```rust,edition2018,no_run
-fn main() {
-    cc::Build::new()
-        .cpp(true)
-        .file("src/foo.cpp")
-        .compile("foo");   
-}
+```rust,no_run
+{{#include cc-bundled-cpp/build.rs}}
+```
 ```
 
-### `src/foo.cpp`
+### `src/multiply.cpp`
 
 ```cpp
-extern "C" {
-    int multiply(int x, int y);
-}
-
-int multiply(int x, int y) {
-    return x*y;
-}
+{{#include cc-bundled-cpp/src/multiply.cpp}}
 ```
 
 ### `src/main.rs`
 
-```rust,edition2018,ignore
-extern {
-    fn multiply(x : i32, y : i32) -> i32;
-}
-
-fn main(){
-    unsafe {
-        println!("{}", multiply(5,7));
-    }   
-}
+```rust,no_run
+{{#include cc-bundled-cpp/src/main.rs}}
 ```
 
 [cc-build-cpp]: https://docs.rs/cc/*/cc/struct.Build.html#method.cpp

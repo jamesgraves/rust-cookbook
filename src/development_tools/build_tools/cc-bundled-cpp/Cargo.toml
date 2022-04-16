@@ -1,5 +1,6 @@
+
 [package]
-name = "cc-bundled-static"
+name = "cc-bundled-cpp"
 version = "0.1.0"
 edition = "2021"
 build = "build.rs"

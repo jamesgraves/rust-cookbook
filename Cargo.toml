@@ -19,4 +19,5 @@ members = [
 	"src/hardware/processor",
 	"src/mem/global_static",
 	"src/development_tools/build_tools/cc-bundled-static",
+	"src/development_tools/build_tools/cc-bundled-cpp",
 ]
