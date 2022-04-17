@@ -22,3 +22,6 @@ documentation should explain any details needed to understand the example.
 simpler use of `Result<(), Box<dyn Error>>` or similar in the examples.
 There will be an extended section on using `anyhow` and `thiserror` as well.
 See also: https://nick.groenen.me/posts/rust-error-handling/
+7. As a consequence of the above, updating to the latest stable versions
+of crates is as easy as running `cargo update` and then running `cargo
+test` to identify any API changes.
