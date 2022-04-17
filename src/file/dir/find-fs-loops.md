@@ -25,7 +25,7 @@ ln -s /tmp/foo/  /tmp/foo/bar/baz/qux
 The following would assert that a loop exists.
 
 ```rust,no_run
-{{#include examples/find_fs_loops.rs}}
+{{#include examples/find-fs-loops.rs}}
 ```
 
 The Unix / Linux `find` utility also detects the loop:

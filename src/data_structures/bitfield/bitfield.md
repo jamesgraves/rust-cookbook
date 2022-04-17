@@ -13,7 +13,7 @@ and implements elementary `clear` operation as well as [`Display`] trait for it.
 Subsequently, shows basic bitwise operations and formatting.
 
 ```rust
-{{#include examples/bitfields.rs}}
+{{#include examples/bitfield.rs}}
 ```
 
 [`bitflags!`]: https://docs.rs/bitflags/*/bitflags/macro.bitflags.html
