@@ -45,7 +45,11 @@ if [[ "${CONTENT_TESTS:-}" == 1 ]]; then
         link-checker --no-local ./book/ --ignore '.*api.github.com*.' || true
     fi
 else
-    echo "Testing code snippets"
+    echo "Testing example code"
     cargo build --verbose
-    cargo test --verbose
+    cargo test --verbose --workspace \
+	    --exclude '*postgres*' \
+	    --exclude '*sqlite*'   \
+
+
 fi
