@@ -11,7 +11,7 @@ encoding using a custom pattern from [`log4rs::encode::pattern`].
 Assigns the configuration to [`log4rs::config::Config`] and sets the default
 [`log::LevelFilter`].
 
-```rust,no_run
+```rust
 {{#include examples/log-custom.rs}}
 ```
 

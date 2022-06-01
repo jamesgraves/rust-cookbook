@@ -12,4 +12,14 @@ mod tests {
         run_example("log-env-variable");
     }
 
+    #[test]
+    fn log_mod() {
+        run_example("log-mod");
+    }
+
+    #[test]
+    fn log_timestamp() {
+        run_example("log-timestamp");
+    }
+
 }

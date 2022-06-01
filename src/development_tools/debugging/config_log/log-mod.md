@@ -5,52 +5,34 @@
 Creates two modules `foo` and nested `foo::bar` with logging directives
 controlled separately with [`RUST_LOG`] environmental variable.
 
-```rust,edition2018
-
-mod foo {
-    mod bar {
-        pub fn run() {
-            log::warn!("[bar] warn");
-            log::info!("[bar] info");
-            log::debug!("[bar] debug");
-        }
-    }
-
-    pub fn run() {
-        log::warn!("[foo] warn");
-        log::info!("[foo] info");
-        log::debug!("[foo] debug");
-        bar::run();
-    }
-}
-
-fn main() {
-    env_logger::init();
-    log::warn!("[root] warn");
-    log::info!("[root] info");
-    log::debug!("[root] debug");
-    foo::run();
-}
+```rust
+{{#include examples/log-mod.rs}}
 ```
 
 [`RUST_LOG`] environment variable controls [`env_logger`][env_logger] output.
 Module declarations take comma separated entries formatted like
-`path::to::module=log_level`. Run the `test` application as follows:
+`path::to::module=log_level`. From the cloned Rust Cookbook repository,
+run the example as follows:
 
 ```bash
-RUST_LOG="warn,test::foo=info,test::foo::bar=debug" ./test
+RUST_LOG="warn,log_mod::foo=info,log_mod::foo::bar=debug" cargo run --example log-mod
 ```
 
-Sets the default [`log::Level`] to `warn`, module `foo` and module `foo::bar`
-to `info` and `debug`.
+This sets the default [`log::Level`] to `warn` for the entire
+application, module `foo` in the application to `info`, and sub-module
+`foo::bar` to `debug`.
+
+Note that because the example filename has a minus sign ('-') in it,
+which is converted to and underscore ('_') because module names cannot
+have a minus sign.
 
 ```bash
-WARN:test: [root] warn
-WARN:test::foo: [foo] warn
-INFO:test::foo: [foo] info
-WARN:test::foo::bar: [bar] warn
-INFO:test::foo::bar: [bar] info
-DEBUG:test::foo::bar: [bar] debug
+[2022-05-21T12:30:34Z WARN  log_mod] [root] warn
+[2022-05-21T12:30:34Z WARN  log_mod::foo] [foo] warn
+[2022-05-21T12:30:34Z INFO  log_mod::foo] [foo] info
+[2022-05-21T12:30:34Z WARN  log_mod::foo::bar] [bar] warn
+[2022-05-21T12:30:34Z INFO  log_mod::foo::bar] [bar] info
+[2022-05-21T12:30:34Z DEBUG log_mod::foo::bar] [bar] debug
 ```
 
 [`log::Level`]: https://docs.rs/log/*/log/enum.Level.html
