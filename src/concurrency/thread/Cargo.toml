@@ -8,8 +8,8 @@ doctest = false
 
 [dependencies]
 crossbeam = "0.8.1"
-crossbeam-channel = "0.5.2"
-image = "0.24.1"
+crossbeam-channel = "0.5.4"
+image = "0.24.2"
 lazy_static = "1.4.0"
 num = "0.4.0"
 num_cpus = "1.13.1"
