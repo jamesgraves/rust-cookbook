@@ -7,25 +7,14 @@ with [`syslog::init`]. [`syslog::Facility`] records the program submitting
 the log entry's classification, [`log::LevelFilter`] denotes allowed log verbosity
 and `Option<&str>` holds optional application name.
 
-```rust,edition2018
-# #[cfg(target_os = "linux")]
-# #[cfg(target_os = "linux")]
-use syslog::{Facility, Error};
+```rust,norun
+{{#include examples/log-syslog.rs}}
+```
 
-# #[cfg(target_os = "linux")]
-fn main() -> Result<(), Error> {
-    syslog::init(Facility::LOG_USER,
-                 log::LevelFilter::Debug,
-                 Some("My app name"))?;
-    log::debug!("this is a debug {}", "message");
-    log::error!("this is an error!");
-    Ok(())
-}
+Check to see what was printed:
 
-# #[cfg(not(target_os = "linux"))]
-# fn main() {
-#     println!("So far, only Linux systems are supported.");
-# }
+```bash
+sudo tail /var/log/syslog
 ```
 
 [`log::LevelFilter`]: https://docs.rs/log/*/log/enum.LevelFilter.html
