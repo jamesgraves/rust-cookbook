@@ -1,5 +1,11 @@
 # Log Messages
 
+Add these crates to your own project via [`cargo-edit`]:
+
+```
+cargo add env_logger log syslog
+```
+
 {{#include log/log-debug.md}}
 
 {{#include log/log-error.md}}
@@ -11,3 +17,5 @@
 {{#include log/log-syslog.md}}
 
 {{#include ../../links.md}}
+
+[`cargo-edit`]: https://crates.io/crates/cargo-edit
