@@ -23,4 +23,5 @@ members = [
 	"src/development_tools/build_tools/cc-bundled-cpp",
 	"src/development_tools/build_tools/cc-defines",
 	"src/development_tools/debugging/config_log",
+	"src/development_tools/debugging/log",
 ]
