@@ -1,4 +1,5 @@
-use rusqlite::{Connection, Result};
+use anyhow::Result;
+use rusqlite::Connection;
 
 fn main() -> Result<()> {
     let conn = Connection::open("cats.db")?;

@@ -1,4 +1,5 @@
-use rusqlite::{Connection, Result};
+use anyhow::Result;
+use rusqlite::Connection;
 use std::collections::HashMap;
 
 #[derive(Debug)]

@@ -23,5 +23,19 @@ have just 'lavender' and 'blue', since the the `DELETE` and the
 {{#include examples/transactions.rs}}
 ```
 
+Since this program uses [`anyhow`] for error handling, the
+`rustqlite::Result` returned by the `tx.commit()` must be converted
+to a `anyhow::Result`. This can be done in a couple different ways
+as shown by the two transaction functions, and they are both equivalent
+to this code:
+
+```rust,norun
+match tx.commit() {
+    Ok(x) => Ok(x),
+    Err(err) => Err(anyhow::Error::new(err)),
+}
+```
+
 [`Connection::transaction`]: https://docs.rs/rusqlite/*/rusqlite/struct.Connection.html#method.transaction
 [`Transaction::commit`]: https://docs.rs/rusqlite/*/rusqlite/struct.Transaction.html#method.commit
+[`anyhow`]: https://docs.rs/anyhow/*/anyhow/index.html
