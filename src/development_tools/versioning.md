@@ -1,7 +1,5 @@
 # Versioning
 
-{{#include versioning/semver-increment.md}}
-
 {{#include versioning/semver-complex.md}}
 
 {{#include versioning/semver-prerelease.md}}
