@@ -10,38 +10,14 @@ is able to represent any valid JSON data.
 
 The example below shows a `&str` of JSON being parsed.  The expected value is declared using the [`json!`] macro.
 
-```rust,edition2018
- use serde_json::json;
-use serde_json::{Value, Error};
-
-fn main() -> Result<(), Error> {
-    let j = r#"{
-                 "userid": 103609,
-                 "verified": true,
-                 "access_privileges": [
-                   "user",
-                   "admin"
-                 ]
-               }"#;
-
-    let parsed: Value = serde_json::from_str(j)?;
-
-    let expected = json!({
-        "userid": 103609,
-        "verified": true,
-        "access_privileges": [
-            "user",
-            "admin"
-        ]
-    });
-
-    assert_eq!(parsed, expected);
-
-    Ok(())
-}
+```rust
+{{#include examples/complex-json.rs}}
 ```
+
+Note the use of [`raw string`]s with the `r#"` and `"#`.
 
 [`from_str`]: https://docs.serde.rs/serde_json/fn.from_str.html
 [`json!`]: https://docs.serde.rs/serde_json/macro.json.html
 [`serde_json`]: https://docs.serde.rs/serde_json/
 [`serde_json::Value`]: https://docs.serde.rs/serde_json/enum.Value.html
+[`raw string`]: https://doc.rust-lang.org/rust-by-example/std/str.html
