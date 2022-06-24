@@ -27,4 +27,5 @@ members = [
 	"src/development_tools/versioning",
 	"src/encoding/complex",
 	"src/encoding/csv",
+	"src/encoding/string",
 ]
