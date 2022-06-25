@@ -19,7 +19,7 @@ common tasks.
 ## How to read this book
 
 The cookbook [index] contains the full list of recipes, organized into
-a number of sections: "basics", "encoding", "concurrency", etc.  The
+a number of sections: "database", "encoding", "concurrency", etc.  The
 sections themselves are more or less ordered in progression, with
 later sections being more advanced, and occasionally building on
 concepts from earlier sections.
@@ -52,11 +52,13 @@ All recipes in the cookbook are full, self contained programs, so
 that they may be copied directly into your own projects for
 experimentation. To do so follow the instructions below.
 
+### Copying the code right from the examples
+
 Consider this example for "generate random numbers within a range":
 
 [![rand-badge]][rand] [![cat-science-badge]][cat-science]
 
-```rust,edition2018
+```rust
 use rand::Rng;
 
 fn main() {
@@ -94,6 +96,91 @@ cargo run
 The crate badges that accompany the examples link to the crates' full
 documentation on [docs.rs], and is often the next documentation you
 should read after deciding which crate suites your purpose.
+
+### Clone the Rust Cookbook
+
+Since all the examples can easily be run from the Rust Cookbook source
+repository, we can just clone it:
+
+```sh
+git clone https://github.com/jamesgraves/rust-cookbook.git
+```
+
+Next, we will go into the repo and run an example:
+
+```sh
+cd rust-cookbook
+cargo run --example basic_usage
+```
+
+Output will be:
+
+```
+    Finished dev [unoptimized + debuginfo] target(s) in 0.09s
+     Running `target/debug/examples/basic_usage`
+Random u8: 153
+Random u16: 52056
+Random u32: 227049851
+Random i32: 364271356
+Random float: 0.3863679947558778
+```
+
+The cookbook is organized as a series of [`cargo workspaces`], so we can
+go into one of them and run unit tests, which run all the examples:
+
+```sh
+cd src/algorithms/randomness
+cargo test
+```
+
+The individual examples are in the `examples` directory, and can easily be
+modified and run, either via `cargo test` or `cargo run --example`
+
+The unit tests run each example as a separate program. We can run the unit
+tests for the **entire** cookbook, but some of the tests will fail unless
+all the required external programs and libraries are installed.
+
+```sh
+# Go to the top level of the rust cookbook:
+cd ~/rust-cookbook
+cargo test
+```
+
+We can also create a new Rust project based around one of the examples:
+
+```sh
+cd ~
+cargo new --bin random_basic_usage
+cp rust-cookbook/src/algorithms/randomness/examples/basic_usage.rs random_basic_usage/src/main.rs
+```
+
+If we don't have the `cargo-edit` crate installed yet (to use the
+`cargo-add` command), now is a good time to install it:
+
+```sh
+cargo install cargo-edit
+```
+
+The `cargo-edit` crate allows us to easily add the dependency needed to run the
+randomness basic usage example, which requires the `rand` crate:
+
+```sh
+cd random_basic_usage
+cargo add rand
+```
+
+That will modify the `Cargo.toml` which lists the dependencies of the project
+we have just created.
+
+Since we have already replaced the `main.rs` with the example code, we can now run it:
+
+```sh
+cargo run
+```
+
+And the output should be the same as when we ran the example from inside the Rust Cookbook
+repository.
+
 
 ## A note about error handling
 
