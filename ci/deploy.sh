@@ -64,7 +64,7 @@ REV=$(git rev-parse --short HEAD)
 cd book
 
 git init
-git remote add upstream "https://$GH_TOKEN@github.com/rust-lang-nursery/rust-cookbook.git"
+git remote add upstream "https://$GH_TOKEN@github.com/jamesgraves/rust-cookbook.git"
 git config user.name "Rust Cookbook"
 git config user.email "cookbook@rust-lang.org"
 git add -A .
