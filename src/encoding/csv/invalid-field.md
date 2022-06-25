@@ -12,7 +12,7 @@ commenting out the `serde` macro invocation in the definition of the
 struct `Record` before the `id: Option<u64>` line.
 
 ```rust
-{{#include examples/invaid-field.rs}}
+{{#include examples/invalid-field.rs}}
 ```
 
 [`csv::invalid_option`]: https://docs.rs/csv/*/csv/fn.invalid_option.html

@@ -7,7 +7,7 @@ In order to use the logging macros, `ConsoleLogger` implements
 the [`log::Log`] trait and [`log::set_logger`] installs it.
 
 ```rust
-{{#include log-custom-logger.rs}}
+{{#include examples/log-custom-logger.rs}}
 ```
 
 [`log::Log`]: https://docs.rs/log/*/log/trait.Log.html
