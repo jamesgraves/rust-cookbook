@@ -193,23 +193,16 @@ Since these recipes are intended to be reused as-is and encourage best
 practices, they set up error handling correctly when there are
 `Result` types involved.
 
-The basic pattern we use is to have a `fn main() -> Result`.
+The basic pattern we use is to have a `fn main() -> Result<(), Box<dyn Error>>`.
 
 The structure generally looks like:
 
-```rust,edition2018
-use error_chain::error_chain;
+```rust
+use std::error::Error;
 use std::net::IpAddr;
 use std::str;
 
-error_chain! {
-    foreign_links {
-        Utf8(std::str::Utf8Error);
-        AddrParse(std::net::AddrParseError);
-    }
-}
-
-fn main() -> Result<()> {
+fn main() -> Result<(), Box<dyn Error>> {
     let bytes = b"2001:db8::1";
 
     // Bytes to string.
@@ -224,34 +217,8 @@ fn main() -> Result<()> {
 
 ```
 
-This is using the `error_chain!` macro to define a custom `Error` and
-`Result` type, along with automatic conversions from two standard
-library error types. The automatic conversions make the `?` operator
-work.
-
-For the sake of readability error handling boilerplate is hidden by
-default like below.  In order to read full contents click on the
-"expand" (<i class="fa fa-expand"></i>) button located in the top
-right corner of the snippet.
-
-```rust,edition2018
-# use error_chain::error_chain;
-
-use url::{Url, Position};
-#
-# error_chain! {
-#     foreign_links {
-#         UrlParse(url::ParseError);
-#     }
-# }
-
-fn main() -> Result<()> {
-    let parsed = Url::parse("https://httpbin.org/cookies/set?k2=v2&k1=v1")?;
-    let cleaned: &str = &parsed[..Position::AfterPath];
-    println!("cleaned: {}", cleaned);
-    Ok(())
-}
-```
+By using `Box<dyn Error>`, this allows automatic conversions from two standard
+library error types to make the `?` operator work.
 
 For more background on error handling in Rust, read [this page of the
 Rust book][error-docs] and [this blog post][error-blog].
@@ -271,8 +238,7 @@ Criteria for *not* including a library include:
 
 [index]: intro.html
 [error-docs]: https://doc.rust-lang.org/book/error-handling.html
-[error-blog]: https://brson.github.io/2016/11/30/starting-with-error-chain
-[error-chain]: https://docs.rs/error-chain/
+[error-blog]: https://nick.groenen.me/posts/rust-error-handling/
 [crates.io]: https://crates.io
 [docs.rs]: https://docs.rs
 [Cargo.toml]: http://doc.crates.io/manifest.html
