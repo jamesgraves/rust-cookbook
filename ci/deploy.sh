@@ -4,18 +4,30 @@ set -o errexit -o nounset
 
 echo "Running $0"
 
-if [ -z "${TRAVIS_BRANCH:-}" ]; then
-    echo "This script may only be run from Travis!"
-    exit 1
-fi
+if [ $# -eq 1 ]
+then
+	if [ $1 = "manual" ]
+	then
+		echo "manually run"
+		CONTENT_TESTS=1
+		UPSTREAM_URL="git@github.com:jamesgraves/rust-cookbook.git"
+		TRAVIS_REPO_SLUG="manual_build"
+	fi
+else
+	if [ -z "${TRAVIS_BRANCH:-}" ]; then
+	    echo "This script may only be run from Travis!"
+	    exit 1
+	fi
 
-if [[ "$TRAVIS_BRANCH" != "main" || "$TRAVIS_RUST_VERSION" != "stable" || "$TRAVIS_OS_NAME" != "linux" ]]; then
-    echo "This commit was made against '$TRAVIS_BRANCH' with '$TRAVIS_RUST_VERSION' on '$TRAVIS_OS_NAME'."
-    echo "Instead of 'main' branch with 'stable' on 'linux'!"
-    echo "Not deploying!"
-    exit 0
-fi
+	if [[ "$TRAVIS_BRANCH" != "main" || "$TRAVIS_RUST_VERSION" != "stable" || "$TRAVIS_OS_NAME" != "linux" ]]; then
+	    echo "This commit was made against '$TRAVIS_BRANCH' with '$TRAVIS_RUST_VERSION' on '$TRAVIS_OS_NAME'."
+	    echo "Instead of 'main' branch with 'stable' on 'linux'!"
+	    echo "Not deploying!"
+	    exit 0
+	fi
 
+	UPSTREAM_URL="https://$GH_TOKEN@github.com/jamesgraves/rust-cookbook.git"
+fi
 
 if [ -z "${CONTENT_TESTS:-}" ]; then
     # check for outdated dependencies on nightly builds
@@ -64,7 +76,7 @@ REV=$(git rev-parse --short HEAD)
 cd book
 
 git init
-git remote add upstream "https://$GH_TOKEN@github.com/jamesgraves/rust-cookbook.git"
+git remote add upstream $UPSTREAM_URL
 git config user.name "Rust Cookbook"
 git config user.email "cookbook@rust-lang.org"
 git add -A .
