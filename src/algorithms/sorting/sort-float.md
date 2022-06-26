@@ -5,7 +5,7 @@
 A Vector of f32 or f64 can be sorted with [`vec::sort_by`] and [`PartialOrd::partial_cmp`].
 
 ```rust
-{{#include examples/sort_float.rs}}
+{{#include examples/sort-float.rs}}
 ```
 
 [`vec::sort_by`]: https://doc.rust-lang.org/std/primitive.slice.html#method.sort_by

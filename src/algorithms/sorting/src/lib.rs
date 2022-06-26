@@ -6,17 +6,17 @@ mod tests {
 
     #[test]
     fn sort_basic() {
-        run_example("sort_basic");
+        run_example("sort-basic");
     }
 
     #[test]
     fn sort_float() {
-        run_example("sort_float");
+        run_example("sort-float");
     }
 
     #[test]
     fn sort_struct() {
-        run_example("sort_struct");
+        run_example("sort-struct");
     }
 }
 

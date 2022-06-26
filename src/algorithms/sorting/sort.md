@@ -7,7 +7,7 @@ be to use [`vec::sort_unstable`] which can be faster, but does not preserve
 the order of equal elements.
 
 ```rust
-{{#include examples/sort_basic.rs}}
+{{#include examples/sort-basic.rs}}
 ```
 
 [`vec::sort`]: https://doc.rust-lang.org/std/vec/struct.Vec.html#method.sort

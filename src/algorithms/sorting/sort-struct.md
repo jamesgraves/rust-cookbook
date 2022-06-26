@@ -8,7 +8,7 @@ order (By name and age). In order to make Person sortable you need four traits [
 You can also provide a custom comparator function using a [`vec:sort_by`] method and sort only by age.
 
 ```rust
-{{#include examples/sort_struct.rs}}
+{{#include examples/sort-struct.rs}}
 ```
 
 [`Eq`]: https://doc.rust-lang.org/std/cmp/trait.Eq.html 
