@@ -75,7 +75,7 @@ echo "Committing book directory to gh-pages branch"
 REV=$(git rev-parse --short HEAD)
 cd book
 
-git init
+git init -b gh-pages
 git remote add upstream $UPSTREAM_URL
 git config user.name "Rust Cookbook"
 git config user.email "cookbook@rust-lang.org"
