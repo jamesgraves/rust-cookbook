@@ -9,8 +9,8 @@ mod tests {
     }
 
     #[test]
-    fn encoding_json() {
-        run_example("json");
+    fn complex_json() {
+        run_example("complex-json");
     }
 
     #[test]
