@@ -1,5 +1,3 @@
-// use log::{LevelFilter::Debug, debug, error};
-
 #[cfg(target_os = "linux")]
 use syslog::{Facility, Error};
 
