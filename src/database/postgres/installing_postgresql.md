@@ -36,13 +36,10 @@ https://www.postgresql.org/download/windows/
 
 # Ubuntu
 
-Ubuntu server guide instructions (can be run on Ubuntu Desktop as well):
-
-https://ubuntu.com/server/docs/databases-postgresql
-
-The instructions can be followed almost exactly. The instructions to
-enable PostgreSQL to listen to all network interfaces may be skipped if running
-these examples on the same system.
+[`Ubuntu server guide`] instructions can be followed almost exactly for an
+Ubuntu server *or* desktop. The instructions to enable PostgreSQL to
+listen to all network interfaces may be skipped if running these
+examples on the same system.
 
 This is the actual SQL statement to set the `postgres` *database* user password:
 
@@ -58,7 +55,7 @@ Be sure to change the password for both the database and system
 # Create the `cats` test database
 
 Connect to the database server using the `psql` command-line client,
-using the password that was set:
+using the password that was set above:
 
 ```
 psql -h 127.0.0.1 -U postgres -W
@@ -70,3 +67,4 @@ When connected, create the `cats` database with this SQL statement:
 CREATE DATABASE cats;
 ```
 
+[`Ubuntu server guide`]: https://ubuntu.com/server/docs/databases-postgresql
