@@ -50,6 +50,7 @@ else
     cargo test --verbose --workspace \
 	    --exclude '*postgres*' \
 	    --exclude '*sqlite*'   \
+	    --exclude '*syslog*' \
 
 
 fi
