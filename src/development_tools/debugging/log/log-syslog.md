@@ -7,7 +7,7 @@ with [`syslog::init`]. [`syslog::Facility`] records the program submitting
 the log entry's classification, [`log::LevelFilter`] denotes allowed log verbosity
 and `Option<&str>` holds optional application name.
 
-```rust,norun
+```rust,no_run
 {{#include examples/log-syslog.rs}}
 ```
 
