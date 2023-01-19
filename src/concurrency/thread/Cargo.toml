@@ -7,12 +7,12 @@ edition = "2021"
 doctest = false
 
 [dependencies]
-crossbeam = "0.8.1"
-crossbeam-channel = "0.5.5"
-image = "0.24.2"
+crossbeam = "0.8.2"
+crossbeam-channel = "0.5.6"
+image = "0.24.5"
 lazy_static = "1.4.0"
 num = "0.4.0"
-num_cpus = "1.13.1"
+num_cpus = "1.15.0"
 ring = "0.16.20"
 threadpool = "1.8.1"
 walkdir = "2.3.2"

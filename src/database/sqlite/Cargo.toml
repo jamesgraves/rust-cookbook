@@ -7,8 +7,8 @@ edition = "2021"
 doctest = false
 
 [dependencies]
-anyhow = "1.0.58"
-rusqlite = "0.27.0"
+anyhow = "1.0.68"
+rusqlite = "0.28.0"
 
 [dev-dependencies]
 cookbook_utils = { path = "../../cookbook_utils" }

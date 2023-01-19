@@ -7,7 +7,7 @@ edition = "2021"
 doctest = false
 
 [dependencies]
-data-encoding = "2.3.2"
+data-encoding = "2.3.3"
 ring = "0.16.20"
 
 [dev-dependencies]

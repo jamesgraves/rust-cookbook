@@ -7,9 +7,9 @@ edition = "2021"
 doctest = false
 
 [dependencies]
-anyhow = "1.0.58"
+anyhow = "1.0.68"
 csv = "1.1.6"
-serde = { version = "1.0.137", features = ["derive"] }
+serde = { version = "1.0.152", features = ["derive"] }
 
 [dev-dependencies]
 cookbook_utils = { path = "../../cookbook_utils" }
