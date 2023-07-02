@@ -8,29 +8,16 @@ The recipe below calls [`Stdio::piped`] to create a pipe, and reads
 `stdout` continuously as soon as the [`BufReader`] is updated.
 
 The below recipe is equivalent to the Unix shell command
-`journalctl | grep usb`.
+`lspci | grep bridge`.
 
-```rust,edition2018,no_run
-use std::process::{Command, Stdio};
-use std::io::{BufRead, BufReader, Error, ErrorKind};
+```rust,no_run
+{{#include examples/command_read_stdout.rs}}
+```
 
-fn main() -> Result<(), Error> {
-    let stdout = Command::new("journalctl")
-        .stdout(Stdio::piped())
-        .spawn()?
-        .stdout
-        .ok_or_else(|| Error::new(ErrorKind::Other,"Could not capture standard output."))?;
+Run this example from the cookbook source code directory:
 
-    let reader = BufReader::new(stdout);
-
-    reader
-        .lines()
-        .filter_map(|line| line.ok())
-        .filter(|line| line.find("usb").is_some())
-        .for_each(|line| println!("{}", line));
-
-     Ok(())
-}
+```shell,no_run
+cargo run --example command_read_stdout
 ```
 
 [`BufReader`]: https://doc.rust-lang.org/std/io/struct.BufReader.html

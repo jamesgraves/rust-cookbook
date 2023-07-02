@@ -4,22 +4,23 @@
 
 Reads an environment variable via [std::env::var].
 
-```rust,edition2018,no_run
-use std::env;
-use std::fs;
-use std::io::Error;
+```rust,no_run
+{{#include examples/read_env_variable.rs}}
+```
 
-fn main() -> Result<(), Error> {
-    // read `config_path` from the environment variable `CONFIG`.
-    // If `CONFIG` isn't set, fall back to a default config path.
-    let config_path = env::var("CONFIG")
-        .unwrap_or("/etc/myapp/config".to_string());
+Run this example from the cookbook source code directory:
 
-    let config: String = fs::read_to_string(config_path)?;
-    println!("Config: {}", config);
+```shell,no_run
+cargo run --example read_env_variable
+```
 
-    Ok(())
-}
+Try creating a `CONFIG` environment variable with the filename of 
+a file that exists:
+
+```shell,no_run
+export CONFIG="/tmp/my_config"
+echo "hello there" > /tmp/my_config
+cargo run --example read_env_variable
 ```
 
 [std::env::var]: https://doc.rust-lang.org/std/env/fn.var.html

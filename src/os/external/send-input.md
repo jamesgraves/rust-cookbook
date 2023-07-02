@@ -2,50 +2,19 @@
 
 [![std-badge]][std] [![cat-os-badge]][cat-os]
 
+This example requires a `python3` interpreter installed.
+
 Opens the `python` interpreter using an external [`Command`] and passes it a
 python statement for execution. [`Output`] of statement is then parsed.
 
-```rust,edition2018,no_run
-# use error_chain::error_chain;
-#
-use std::collections::HashSet;
-use std::io::Write;
-use std::process::{Command, Stdio};
-#
-# error_chain!{
-#     errors { CmdError }
-#     foreign_links {
-#         Io(std::io::Error);
-#         Utf8(std::string::FromUtf8Error);
-#     }
-# }
+```rust,no_run
+{{#include examples/command_input_output.rs}}
+```
 
-fn main() -> Result<()> {
-    let mut child = Command::new("python").stdin(Stdio::piped())
-        .stderr(Stdio::piped())
-        .stdout(Stdio::piped())
-        .spawn()?;
+Run this example from the cookbook source code directory:
 
-    child.stdin
-        .as_mut()
-        .ok_or("Child process stdin has not been captured!")?
-        .write_all(b"import this; copyright(); credits(); exit()")?;
-
-    let output = child.wait_with_output()?;
-
-    if output.status.success() {
-        let raw_output = String::from_utf8(output.stdout)?;
-        let words = raw_output.split_whitespace()
-            .map(|s| s.to_lowercase())
-            .collect::<HashSet<_>>();
-        println!("Found {} unique words:", words.len());
-        println!("{:#?}", words);
-        Ok(())
-    } else {
-        let err = String::from_utf8(output.stderr)?;
-        error_chain::bail!("External command failed:\n {}", err)
-    }
-}
+```shell,no_run
+cargo run --example command_input_output
 ```
 
 [`Command`]: https://doc.rust-lang.org/std/process/struct.Command.html

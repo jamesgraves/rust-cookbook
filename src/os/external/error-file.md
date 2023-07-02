@@ -9,27 +9,26 @@ writes to a specified file.  [`File::try_clone`] references the same file handle
 for `stdout` and `stderr`. It will ensure that both handles write with the same
 cursor position.
 
-The below recipe is equivalent to run the Unix shell command `ls
-. oops >out.txt 2>&1`.
+The below recipe is equivalent to run the Unix shell command
+`ls /tmp /tmp/oops > /tmp/out.txt 2>&1`.
 
-```rust,edition2018,no_run
-use std::fs::File;
-use std::io::Error;
-use std::process::{Command, Stdio};
+Since the `/tmp/oops` file doesn't exist (unless you create it!), the `ls` command
+will generate an error on `stderr` as well as the normal output on `stdout`.
 
-fn main() -> Result<(), Error> {
-    let outputs = File::create("out.txt")?;
-    let errors = outputs.try_clone()?;
+```rust,no_run
+{{#include examples/command_stderr.rs}}
+```
 
-    Command::new("ls")
-        .args(&[".", "oops"])
-        .stdout(Stdio::from(outputs))
-        .stderr(Stdio::from(errors))
-        .spawn()?
-        .wait_with_output()?;
+To run this from the cookbook source code directory:
 
-    Ok(())
-}
+```shell,no_run
+cargo run --example command_stderr
+```
+
+Examine the generated output:
+
+```shell,no_run
+cat /tmp/out.txt
 ```
 
 [`File::try_clone`]: https://doc.rust-lang.org/std/fs/struct.File.html#method.try_clone
