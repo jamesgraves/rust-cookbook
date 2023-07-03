@@ -1,6 +1,6 @@
 # CSV processing
 
-Add these crates to your own project using [`cargo-edit`]:
+Add these crates to your own project:
 
 ```sh
 cargo add csv serde anyhow
@@ -21,5 +21,3 @@ cargo add csv serde anyhow
 {{#include csv/transform-color.md}}
 
 {{#include ../links.md}}
-
-[`cargo-edit`]: https://crates.io/crates/cargo-edit

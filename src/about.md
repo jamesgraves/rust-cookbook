@@ -78,13 +78,7 @@ cd my-example
 
 Now, we also need to add the necessary crates to [Cargo.toml], as
 indicated by the crate badges, in this case just "rand". To do so,
-we'll use the `cargo add` command, which is provided by the
-[`cargo-edit`] crate, which we need to install first:
-
-```sh
-cargo install cargo-edit
-cargo add rand
-```
+we'll use the `cargo add` command.
 
 Now you can replace `src/main.rs` with the full contents of the
 example and run it:

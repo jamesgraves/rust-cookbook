@@ -1,5 +1,5 @@
 
-Operating system packages are required to compile and run the Sqlite3 examples
+Operating system packages are required to compile and run the SQLite3 examples
 which use the [`rusqlite`] crate.
 
 # Debian / Ubuntu
@@ -16,11 +16,10 @@ sudo dnf install sqlite sqlite-devel
 
 -----
 
-Add these crates to your own project with [`cargo-edit`]:
+Add these crates to your own project:
 
 ```
 cargo add anyhow rusqlite
 ```
 
-[`cargo-edit`]: https://crates.io/crates/cargo-edit
 [`rusqlite`]:  https://docs.rs/rusqlite/*/rusqlite

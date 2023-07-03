@@ -1,6 +1,6 @@
 # Structured Data
 
-Add these crates to your own project with [`cargo-edit`]:
+Add these crates to your own project:
 
 ```sh
 cargo add serde --features derive
@@ -14,5 +14,3 @@ cargo add byteorder serde_json toml
 {{#include complex/endian-byte.md}}
 
 {{#include ../links.md}}
-
-[`cargo-edit`]: https://crates.io/crates/cargo-edit
