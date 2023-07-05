@@ -6,21 +6,34 @@ In this example, the port is displayed on the console, and the program will
 listen until a request is made.  `SocketAddrV4` assigns a random port when
 setting port to 0.
 
-```rust,edition2018,no_run
-use std::net::{SocketAddrV4, Ipv4Addr, TcpListener};
-use std::io::{Read, Error};
+```rust,no_run
+{{#include examples/listen_unused.rs}}
+```
 
-fn main() -> Result<(), Error> {
-    let loopback = Ipv4Addr::new(127, 0, 0, 1);
-    let socket = SocketAddrV4::new(loopback, 0);
-    let listener = TcpListener::bind(socket)?;
-    let port = listener.local_addr()?;
-    println!("Listening on {}, access this port to end the program", port);
-    let (mut tcp_stream, addr) = listener.accept()?; //block  until requested
-    println!("Connection received! {:?} is sending data.", addr);
-    let mut input = String::new();
-    let _ = tcp_stream.read_to_string(&mut input)?;
-    println!("{:?} says {}", addr, input);
-    Ok(())
-}
+From the cookbook repository, run this example:
+
+```
+cargo run --example listen_unused
+```
+
+The listening port number will be printed, as in this example run:
+
+```
+Listening on 127.0.0.1:34337, access this port to end the program
+```
+
+Then, in another terminal window, use the `netcat` command to connect to
+the example program, specifing the listening port number printed, and
+send it some data:
+
+```
+echo "hi there" | nc -N localhost 34337
+```
+
+The example program should then print out what was sent over the TCP socket
+and then exit:
+
+```
+Connection received! 127.0.0.1:36500 is sending data.
+127.0.0.1:36500 says hi there
 ```

@@ -28,5 +28,6 @@ members = [
 	"src/encoding/complex",
 	"src/encoding/csv",
 	"src/encoding/string",
+	"src/net/server",
 	"src/os/external",
 ]
