@@ -1,0 +1,16 @@
+[package]
+name = "linear_algebra"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+doctest = false
+
+[dependencies]
+approx = "0.5.1"
+nalgebra = { version = "0.32.2", features = ["serde-serialize"] }
+ndarray = { version = "0.15.6", features = ["approx"] }
+serde_json = "1.0.100"
+
+[dev-dependencies]
+cookbook_utils = { path = "../../../cookbook_utils" }
