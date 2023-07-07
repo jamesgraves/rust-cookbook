@@ -34,4 +34,5 @@ members = [
 	"src/science/mathematics/linear_algebra",
 	"src/science/mathematics/miscellaneous",
 	"src/science/mathematics/statistics",
+	"src/science/mathematics/trigonometry",
 ]
