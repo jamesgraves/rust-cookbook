@@ -31,4 +31,6 @@ members = [
 	"src/net/server",
 	"src/os/external",
 	"src/science/mathematics/complex_numbers",
+	"src/science/mathematics/linear_algebra",
+	"src/science/mathematics/miscellaneous",
 ]

@@ -2,26 +2,16 @@
 
 [![num-badge]][num] [![cat-science-badge]][cat-science]
 
-Calculation for integers exceeding 128 bits are possible with [`BigInt`].
+Add the `num_bigint` crate to your own project:
 
-```rust,edition2018
-use num::bigint::{BigInt, ToBigInt};
-
-fn factorial(x: i32) -> BigInt {
-    if let Some(mut factorial) = 1.to_bigint() {
-        for i in 1..=x {
-            factorial = factorial * i;
-        }
-        factorial
-    }
-    else {
-        panic!("Failed to calculate factorial!");
-    }
-}
-
-fn main() {
-    println!("{}! equals {}", 100, factorial(100));
-}
+```
+cargo add num_bigint
 ```
 
-[`BigInt`]: https://docs.rs/num/0.2.0/num/struct.BigInt.html
+Calculation for integers exceeding 128 bits are possible with [`BigInt`].
+
+```rust
+{{#include examples/big_integers.rs}}
+```
+
+[`BigInt`]: https://docs.rs/num-bigint/latest/num_bigint/
