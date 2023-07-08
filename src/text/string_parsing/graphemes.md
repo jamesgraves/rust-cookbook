@@ -2,19 +2,18 @@
 
 [![unicode-segmentation-badge]][`unicode-segmentation`] [![cat-text-processing-badge]][cat-text-processing]
 
+Add this crate to your own project:
+
+```
+cargo add unicode-segmentation
+```
+
 Collect individual Unicode graphemes from UTF-8 string using the 
 [`UnicodeSegmentation::graphemes`] function from the [`unicode-segmentation`] crate.
 
-```rust,edition2018
-use unicode_segmentation::UnicodeSegmentation;
-
-fn main() {
-    let name = "José Guimarães\r\n";
-    let graphemes = UnicodeSegmentation::graphemes(name, true)
-    	.collect::<Vec<&str>>();
-	assert_eq!(graphemes[3], "é");
-}
+```rust
+{{#include examples/unicode_graphemes.rs}}
 ```
 
 [`UnicodeSegmentation::graphemes`]: https://docs.rs/unicode-segmentation/*/unicode_segmentation/trait.UnicodeSegmentation.html#tymethod.graphemes
-[`unicode-segmentation`]: https://docs.rs/unicode-segmentation/1.2.1/unicode_segmentation/
+[`unicode-segmentation`]: https://docs.rs/unicode-segmentation/latest/unicode_segmentation/
