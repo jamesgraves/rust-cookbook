@@ -13,7 +13,7 @@ fn reformat_dates(before: &str) -> Cow<str> {
 }
 
 fn main() {
-    let before = "03/14/2012, 01/15/2013 and 07/05/2014";
+    let before = "apple 03/14/2012, cherry 01/15/2013 and banana 07/05/2014";
     let after = reformat_dates(before);
-    assert_eq!(after, "2012-03-14, 2013-01-15 and 2014-07-05");
+    assert_eq!(after, "apple 2012-03-14, cherry 2013-01-15 and banana 2014-07-05");
 }
