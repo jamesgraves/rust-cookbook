@@ -1,5 +1,11 @@
 # Regular Expressions
 
+Add these crates to your own project:
+
+```shell
+cargo add lazy_static regex stringreader
+```
+
 {{#include regex/email.md}}
 
 {{#include regex/hashtags.md}}

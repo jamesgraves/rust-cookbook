@@ -2,47 +2,19 @@
 
 [![regex-badge]][regex] [![cat-text-processing-badge]][cat-text-processing]
 
-Reads a file named `application.log` and only outputs the lines
-containing “version X.X.X”, some IP address followed by port 443
+
+Reads file contents (stored as a string in the program itself)  and only
+outputs the lines containing “version X.X.X”, some IP address followed by port 443
 (e.g. “192.168.0.1:443”), or a specific warning.
+
+The example can be modified to read from an actual file.
 
 A [`regex::RegexSetBuilder`] composes a [`regex::RegexSet`].
 Since backslashes are very common in regular expressions, using
 [raw string literals] makes them more readable.
 
-```rust,edition2018,no_run
-# use error_chain::error_chain;
-
-use std::fs::File;
-use std::io::{BufReader, BufRead};
-use regex::RegexSetBuilder;
-
-# error_chain! {
-#     foreign_links {
-#         Io(std::io::Error);
-#         Regex(regex::Error);
-#     }
-# }
-#
-fn main() -> Result<()> {
-    let log_path = "application.log";
-    let buffered = BufReader::new(File::open(log_path)?);
-
-    let set = RegexSetBuilder::new(&[
-        r#"version "\d\.\d\.\d""#,
-        r#"\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}:443"#,
-        r#"warning.*timeout expired"#,
-    ]).case_insensitive(true)
-        .build()?;
-
-    buffered
-        .lines()
-        .filter_map(|line| line.ok())
-        .filter(|line| set.is_match(line.as_str()))
-        .for_each(|x| println!("{}", x));
-
-    Ok(())
-}
+```rust
+{{#include examples/filter_log.rs}}
 ```
 
 [`regex::RegexSet`]: https://docs.rs/regex/*/regex/struct.RegexSet.html

@@ -35,4 +35,5 @@ members = [
 	"src/science/mathematics/miscellaneous",
 	"src/science/mathematics/statistics",
 	"src/science/mathematics/trigonometry",
+	"src/text/regex",
 ]
