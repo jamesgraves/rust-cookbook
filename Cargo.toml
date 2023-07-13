@@ -37,4 +37,5 @@ members = [
 	"src/science/mathematics/trigonometry",
 	"src/text/regex",
 	"src/text/string_parsing",
+	"src/web/clients/api",
 ]
