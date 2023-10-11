@@ -1,4 +1,5 @@
 [workspace]
+resolver = "2"
 members = [
 	"src/algorithms/randomness",
 	"src/algorithms/sorting",
@@ -39,4 +40,5 @@ members = [
 	"src/text/string_parsing",
 	"src/web/clients/api",
 	"src/web/clients/authentication",
+	"src/web/clients/download",
 ]

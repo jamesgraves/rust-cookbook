@@ -8,10 +8,10 @@ doctest = false
 
 [dependencies]
 byteorder = "1.4.3"
-serde = { version = "1.0.152", features = ["derive"] }
+serde = { version = "1.0.171", features = ["derive"] }
 serde-hex = { version = "0.1.0", optional = true }
-serde_json = "1.0.91"
-toml = "0.5.10"
+serde_json = "1.0.100"
+toml = "0.7.6"
 
 [dev-dependencies]
 cookbook_utils = { path = "../../cookbook_utils" }
