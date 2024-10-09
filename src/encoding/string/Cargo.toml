@@ -8,9 +8,9 @@ doctest = false
 
 [dependencies]
 base64 = "0.20.0"
-data-encoding = "2.3.3"
-percent-encoding = "2.2.0"
-url = "2.3.1"
+data-encoding = "2.6.0"
+percent-encoding = "2.3.1"
+url = "2.5.2"
 
 [dev-dependencies]
 cookbook_utils = { path = "../../cookbook_utils" }

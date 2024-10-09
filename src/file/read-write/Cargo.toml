@@ -7,7 +7,7 @@ edition = "2021"
 doctest = false
 
 [dependencies]
-memmap2 = "0.5.8"
+memmap2 = "0.5.10"
 same-file = "1.0.6"
 
 [dev-dependencies]
