@@ -34,6 +34,25 @@ $ open ./book/index.html     # mac
 [Read it here]: https://jamesgraves.github.io/rust-cookbook
 [Rust]: https://www.rust-lang.org/
 
+## Create a Rust project based on an example
+
+All the examples can be copied out to a new project and modified from there.
+
+```bash
+# Create a new project based on a Rayon example
+$ cargo new my_new_rayon_project
+
+# Overwrite the main.rs with the example code
+$ cp rust-cookbook/src/concurrency/parallel/examples/rayon-map-reduce.rs my_new_rayon_project/src/main.rs
+
+# Add the required libraries as mentioned in the recipe to the new project's Cargo.toml
+$ cd my_new_rayon_project/
+$ cargo add rayon
+
+# Run it!
+$ cargo run
+```
+
 ## Contributing
 
 This project is intended to be easy for new [Rust] programmers to
