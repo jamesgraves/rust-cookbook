@@ -2,7 +2,7 @@ use std::process::{Command, Stdio};
 use std::io::{BufRead, BufReader, Error, ErrorKind};
 
 fn main() -> Result<(), Error> {
-    let stdout = Command::new("lspci")
+    let stdout = Command::new("lsusb")
         .stdout(Stdio::piped())
         .spawn()?
         .stdout
