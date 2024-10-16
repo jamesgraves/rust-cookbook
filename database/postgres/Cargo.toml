@@ -1,0 +1,13 @@
+[package]
+name = "postgres-example"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+doctest = false
+
+[dependencies]
+postgres = "0.19.9"
+
+[dev-dependencies]
+cookbook_utils = { path = "../../cookbook_utils" }

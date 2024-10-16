@@ -1,0 +1,13 @@
+[package]
+name = "complex_numbers"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+doctest = false
+
+[dependencies]
+num-complex = "0.4.6"
+
+[dev-dependencies]
+cookbook_utils = { path = "../../../cookbook_utils" }

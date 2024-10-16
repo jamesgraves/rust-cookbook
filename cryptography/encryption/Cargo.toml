@@ -1,0 +1,14 @@
+[package]
+name = "encryption"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+doctest = false
+
+[dependencies]
+data-encoding = "2.6.0"
+ring = "0.17.8"
+
+[dev-dependencies]
+cookbook_utils = { path = "../../cookbook_utils" }
