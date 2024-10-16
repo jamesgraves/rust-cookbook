@@ -1,4 +1,4 @@
-## Parse command line arguments
+## Clap (derive style)
 
 [![clap-badge]][clap] [![cat-command-line-badge]][cat-command-line]
 
