@@ -4,7 +4,7 @@
 Creates two matrices with [`ndarray::arr2`] and performs matrix multiplication on them with [`ndarray::ArrayBase::dot`].
 
 ```rust
-{{#include xamples/multiply_matrices.rs}}
+{{#include examples/multiply_matrices.rs}}
 ```
 
 [`ndarray::arr2`]: https://docs.rs/ndarray/*/ndarray/fn.arr2.html
