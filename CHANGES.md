@@ -23,8 +23,10 @@ simpler use of `Result<(), Box<dyn Error>>` or similar in the examples.
 There will be an extended section on using `anyhow` and `thiserror` as well.
 See also: https://nick.groenen.me/posts/rust-error-handling/
 7. As a consequence of the above, updating to the current stable versions
-of crates is as easy as running `cargo update` and then running `cargo
-test` to identify any API changes. If everything works, then `cargo upgrade --workspace`
-can be used to insert the updated crate versions into the `Cargo.toml` files.
-This should be done frequently, so that the Cookbook shows examples that
-are correct for the current stable versions of crates.
+of crates is as easy as running `cargo update`  and then running `cargo test`
+to identify any API changes.  If everything works, then `cargo upgrade`
+(requires install of `cargo-edit` and `cargo-upgrades`) can be used to insert
+the updated crate versions into the `Cargo.toml` files.
+This all should be done frequently, so that the Cookbook shows examples that
+are correct for the current stable versions of crates. Note that by default
+`cargo upgrade` will not change to crate versions that are not semver compatible.

@@ -31,16 +31,16 @@ which _crates_ they use, like [![rand-badge]][rand], and which
 categories on [crates.io] those crates belong to, like
 [![cat-science-badge]][cat-science].
 
+Many of the examples can be run in the [Rust Playground][rust-playground]
+directly from the Cookbook, these examples will have a "play" button
+in the top right corner. However, some examples require access to the
+filesystem, or require external software, so they can only be run
+when the Cookbook repository itself is cloned.
+
 New Rust programmers should be comfortable reading from the first
 section to the last, and doing so should give one a strong overview of
 the crate ecosystem. Click on the section header in the index, or in
 the sidebar to navigate to the page for that section of the book.
-
-If you are simply looking for the solution to a simple task, the
-cookbook is today more difficult to navigate. The easiest way to find
-a specific recipe is to scan the index looking for the crates and
-categories one is interested in. From there, click on the name of the
-recipe to view it. This will improve in the future.
 
 ## How to use the recipes
 
@@ -50,42 +50,7 @@ further information.
 
 All recipes in the cookbook are full, self contained programs, so
 that they may be copied directly into your own projects for
-experimentation. To do so follow the instructions below.
-
-### Copying the code right from the examples
-
-Consider this example for "generate random numbers within a range":
-
-[![rand-badge]][rand] [![cat-science-badge]][cat-science]
-
-```rust
-use rand::Rng;
-
-fn main() {
-    let mut rng = rand::thread_rng();
-    println!("Random f64: {}", rng.gen::<f64>());
-}
-```
-
-To work with it locally we can run the following commands to create
-a new cargo project, and change to that directory:
-
-
-```sh
-cargo new my-example --bin
-cd my-example
-```
-
-Now, we also need to add the necessary crates to [Cargo.toml], as
-indicated by the crate badges, in this case just "rand". To do so,
-we'll use the `cargo add` command.
-
-Now you can replace `src/main.rs` with the full contents of the
-example and run it:
-
-```sh
-cargo run
-```
+experimentation. The instructions to do so are below.
 
 The crate badges that accompany the examples link to the crates' full
 documentation on [docs.rs], and is often the next documentation you
@@ -93,21 +58,22 @@ should read after deciding which crate suites your purpose.
 
 ### Clone the Rust Cookbook
 
-Since all the examples can easily be run from the Rust Cookbook source
+Since all the examples can be run from the Rust Cookbook source
 repository, we can just clone it:
 
 ```sh
 git clone https://github.com/jamesgraves/rust-cookbook.git
 ```
 
-Next, we will go into the repo and run an example:
+Next, we will go into the repo and run an example (in this case,
+from the randomness section):
 
 ```sh
 cd rust-cookbook
 cargo run --example basic_usage
 ```
 
-Output will be:
+The output will be similar to this:
 
 ```
     Finished dev [unoptimized + debuginfo] target(s) in 0.09s
@@ -119,16 +85,21 @@ Random i32: 364271356
 Random float: 0.3863679947558778
 ```
 
+Note that it doesn't matter what the current directory is inside the
+Cookbook project, individual examples will run via their unique names.
+
 The cookbook is organized as a series of [`cargo workspaces`], so we can
-go into one of them and run unit tests, which run all the examples:
+go into one of them and run unit tests, which run all the examples in that
+section:
 
 ```sh
 cd src/algorithms/randomness
 cargo test
 ```
 
-The individual examples are in the `examples` directory, and can easily be
-modified and run, either via `cargo test` or `cargo run --example`
+The individual examples are in the `examples` subdirectory of
+`src/algorithms/randomness`, and can easily be
+modified and run, either via `cargo run --example` or `cargo test`.
 
 The unit tests run each example as a separate program. We can run the unit
 tests for the **entire** cookbook, but some of the tests will fail unless
@@ -140,40 +111,44 @@ cd ~/rust-cookbook
 cargo test
 ```
 
-We can also create a new Rust project based around one of the examples:
+For instance,
+the database interface examples require the database software be installed, and
+in the case of PostgreSQL, the database server to be configured; see those
+sections of the cookbook for instructions to do that.
+
+We can also create an entirely new Rust project based around the example.
 
 ```sh
 cd ~
 cargo new --bin random_basic_usage
+```
+
+Now copy over the newly-generated `main.rs` (created by the `cargo new` command)
+with the code from the example:
+
+```sh
 cp rust-cookbook/src/algorithms/randomness/examples/basic_usage.rs random_basic_usage/src/main.rs
 ```
 
-If we don't have the `cargo-edit` crate installed yet (to use the
-`cargo-add` command), now is a good time to install it:
-
-```sh
-cargo install cargo-edit
-```
-
-The `cargo-edit` crate allows us to easily add the dependency needed to run the
-randomness basic usage example, which requires the `rand` crate:
+Add the `rand` crate to the newly created project:
 
 ```sh
 cd random_basic_usage
 cargo add rand
 ```
 
-That will modify the `Cargo.toml` which lists the dependencies of the project
+That will modify the `Cargo.toml` which lists the top-level dependencies of the project
 we have just created.
 
-Since we have already replaced the `main.rs` with the example code, we can now run it:
+Since we have already replaced the `main.rs` with the example code, we can now
+compile and run it:
 
 ```sh
 cargo run
 ```
 
 And the output should be the same as when we ran the example from inside the Rust Cookbook
-repository.
+repository, as seen above.
 
 
 ## A note about error handling
@@ -221,16 +196,20 @@ Rust book][error-docs] and [this blog post][error-blog].
 
 We are open to including any library crate that is at least moderately
 popular. For example, any library crate mentioned on
-[Awesome Rust][awesome-rust-libs] shall be considered.
+[Awesome Rust][awesome-rust-libs] or [blessed.rs][blessed-rs] shall be
+considered for inclusion.
 
-Criteria for *not* including a library include:
+Here are some Criteria for *not* including a library:
 
-* Still in rapid development, minimal / no use in production code.
-* Very large code size for a minimally useful example.
+* The library is still in rapid development, with frequent API-breaking changes.
+* The library is not widely used, or likely to only appeal to a very narrow audience.
+    * For an example, a crate that is used only for a specific video game.
+* Libraries that reqire a large amount of code for a *minimally* useful example.
 
 {{#include links.md}}
 
 [index]: intro.html
+[rust-playground]: https://play.rust-lang.org/
 [error-docs]: https://doc.rust-lang.org/book/error-handling.html
 [error-blog]: https://nick.groenen.me/posts/rust-error-handling/
 [crates.io]: https://crates.io
@@ -238,3 +217,4 @@ Criteria for *not* including a library include:
 [Cargo.toml]: http://doc.crates.io/manifest.html
 [`cargo-edit`]: https://github.com/killercup/cargo-edit
 [awesome-rust-libs]: https://github.com/rust-unofficial/awesome-rust#libraries
+[blessed-rs]: https://blessed.rs

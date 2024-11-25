@@ -34,24 +34,33 @@ $ open ./book/index.html     # mac
 [Read it here]: https://jamesgraves.github.io/rust-cookbook
 [Rust]: https://www.rust-lang.org/
 
-## Create a Rust project based on an example
+## Run an example locally
 
-All the examples can be copied out to a new project and modified from there.
+From anywhere inside the Cookbook repository, you can run individual examples with `cargo run --example`:
 
 ```bash
-# Create a new project based on a Rayon example
-$ cargo new my_new_rayon_project
-
-# Overwrite the main.rs with the example code
-$ cp rust-cookbook/src/concurrency/parallel/examples/rayon-map-reduce.rs my_new_rayon_project/src/main.rs
-
-# Add the required libraries as mentioned in the recipe to the new project's Cargo.toml
-$ cd my_new_rayon_project/
-$ cargo add rayon
-
-# Run it!
-$ cargo run
+$ cargo run --example crossbeam-spsc
+Received 0
+Received 1
+Received 2
+Received 3
+Received 4
 ```
+
+## Testing the examples
+
+Individual sections can be tested by going into that directory and running `cargo test`:
+
+```bash
+$ cd src/cli/arguments
+$ cargo test
+```
+
+Testing ***all*** the examples can be done by running `cargo test` at the top level of the
+project. Note that this requires setting up the example database and Internet access for the
+web-related examples.
+
+See the [About] section to create a new project based around an example.
 
 ## Contributing
 
@@ -59,7 +68,8 @@ This project is intended to be easy for new [Rust] programmers to
 contribute to, and an easy way to get involved with the Rust
 community. It needs and welcomes help.
 
-For details see [CONTRIBUTING.md](CONTRIBUTING.md) on GitHub.
+For details see [CONTRIBUTING.md](CONTRIBUTING.md) on GitHub, and the
+[CHANGES.md](CHANGES.md) for how this has changed from the rust-nursery version.
 
 ## License [![CC0-badge]][CC0-deed]
 
@@ -73,3 +83,4 @@ terms or conditions.
 
 [CC0-deed]: https://creativecommons.org/publicdomain/zero/1.0/deed.en
 [CC0-badge]: https://mirrors.creativecommons.org/presskit/buttons/80x15/svg/cc-zero.svg
+[About]: https://jamesgraves.github.io/rust-cookbook/about.html
