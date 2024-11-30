@@ -23,10 +23,12 @@ simpler use of `Result<(), Box<dyn Error>>` or similar in the examples.
 There will be an extended section on using `anyhow` and `thiserror` as well.
 See also: https://nick.groenen.me/posts/rust-error-handling/
 7. As a consequence of the above, updating to the current stable versions
-of crates is as easy as running `cargo update`  and then running `cargo test`
-to identify any API changes.  If everything works, then `cargo upgrade`
-(requires install of `cargo-edit` and `cargo-upgrades`) can be used to insert
+of crates is possible with a couple commands from `cargo-edit` and `cargo-upgrades`.
+When using the "nightly" channel of the Rust toolchain, running
+`cargo update -Z unstable-options --breaking` (modifies the `Cargo.lock`)
+and then running `cargo test` should identify any API changes.
+ After everything works again, running
+`cargo upgrade -Z unstable-options --breaking` can then be used to insert
 the updated crate versions into the `Cargo.toml` files.
 This all should be done frequently, so that the Cookbook shows examples that
-are correct for the current stable versions of crates. Note that by default
-`cargo upgrade` will not change to crate versions that are not semver compatible.
+are correct for the current stable versions of crates.
