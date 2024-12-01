@@ -40,4 +40,5 @@ members = [
 	"src/text/string_parsing",
 	"src/web/clients/api",
 	"src/web/clients/authentication",
+	"src/development_tools/debugging/tracing",
 ]
